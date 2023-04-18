@@ -117,7 +117,7 @@
         "allowTernary": true
       }
     ],
-    "import/no-extraneous-dependencies": "off",
+    "import/no-extraneous-dependencies": "off"
   },
   "ignorePatterns": [
     "src/**/*.test.ts",
