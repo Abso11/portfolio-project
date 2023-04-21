@@ -6,10 +6,8 @@ export const MenuItem = ({ title, isActive, subMenu, icon, iconActive, onClick, 
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   const handleClick = (): void => {
-    if (!disabled && subMenu) {
-      setIsExpanded(!isExpanded);
-    }
-    if (!disabled) if (onClick) onClick();
+    if (!disabled && subMenu) setIsExpanded(!isExpanded);
+    else if (!disabled && onClick) onClick();
   };
 
   // eslint-disable-next-line no-nested-ternary

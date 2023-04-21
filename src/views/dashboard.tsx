@@ -1,8 +1,7 @@
-import DashboardList from 'components/dashboard-list/dashboard-list';
+import { DashboardList } from 'components/dashboard-list';
 
 export const Dashboard = (): JSX.Element => (
   <>
-    <p>test</p>
     <DashboardList />
   </>
 );
