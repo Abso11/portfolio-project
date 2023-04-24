@@ -14,9 +14,9 @@ export const dashboardHandler = [
     const take = req.url.searchParams.get('take');
     const sortOrder = req.url.searchParams.get('sort_order');
     const sortField = req.url.searchParams.get('sort_field');
-    const startDate = req.url.searchParams.get('start_date');
-    const endDate = req.url.searchParams.get('end_date');
-    const filter = req.url.searchParams.get('filter');
+    // const startDate = req.url.searchParams.get('start_date');
+    // const endDate = req.url.searchParams.get('end_date');
+    // const filter = req.url.searchParams.get('filter');
 
     if (!take) {
       return res(ctx.status(400), ctx.json({ errorMessage: 'Take is required' }));

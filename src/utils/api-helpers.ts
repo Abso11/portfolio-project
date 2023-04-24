@@ -1,5 +1,5 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
-import { appRoutes } from 'urls';
+// import { appRoutes } from 'urls';
 
 export const getData = async <T1, T2>(url: string, params?: T1): Promise<AxiosResponse<T2>> => {
   const options: AxiosRequestConfig = {
