@@ -1,7 +1,6 @@
 import ContentWrapper from 'components/common/content-wrapper';
-import { Pagination, Table } from 'antd';
+import { Pagination, Spin, Table } from 'antd';
 import { OrderDirection } from 'enums';
-import Spinner from 'components/common/spinner';
 import { useListQuery } from 'hooks';
 import { usePaginationHelpers } from 'hooks/use-pagination-helpers';
 import { useFetchDashboardList } from './dashboard-list.hooks';
@@ -29,7 +28,7 @@ export const DashboardList = (): JSX.Element => {
           onChange={handleTableChange}
           loading={{
             spinning: isFetching,
-            indicator: <Spinner />
+            indicator: <Spin />
           }}
           rowKey={(row) => row.id}
           pagination={false}

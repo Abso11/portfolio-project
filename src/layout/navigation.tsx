@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Menu } from 'components/responsive-menu';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { appRoutes } from 'urls';
 
 const { MenuItem } = Menu;
 
@@ -14,16 +15,16 @@ export const Navigation = (): JSX.Element => {
       <MenuItem
         title={'Dashboard List'}
         onClick={() => {
-          navigate('/dashboard');
+          navigate(appRoutes.app.dashboard);
         }}
         isActive={pathname === '/'}
       />
       <MenuItem
         title={'User Details'}
         onClick={() => {
-          navigate('/userdetails');
+          navigate(appRoutes.app.dashboardDetails);
         }}
-        isActive={pathname.includes('/userdetails')}
+        isActive={pathname.includes('/details')}
       />
     </Menu>
   );
