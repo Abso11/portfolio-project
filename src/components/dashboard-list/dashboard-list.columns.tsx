@@ -2,7 +2,9 @@ import { ColumnsType } from 'antd/es/table';
 import { format } from 'date-fns';
 import { AntdColumnTitle } from 'components/common/antd-column-title';
 import { OrderDirection } from 'enums';
+import { appRoutes } from 'urls';
 import { DashboardListRes } from './dashboard-list.types';
+import { StyledLink } from './dashboard-list.styled';
 
 export const formatDate = (date: Date): string => format(new Date(date), 'dd.MM.yyyy HH:mm');
 
@@ -32,7 +34,8 @@ export const columns: ColumnsType<Column> = [
     dataIndex: 'user_id',
     key: 'user_id',
     width: 150,
-    ellipsis: true
+    ellipsis: true,
+    render: (text: string) => <StyledLink to={appRoutes.app.dashboardDetails.replace(':id', text)}>{text}</StyledLink>
   },
   {
     title: 'User Name',

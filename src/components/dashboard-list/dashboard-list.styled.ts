@@ -1,9 +1,9 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { mediaQuery, zIndex } from 'styles';
 
 export const TableWrapper = styled.div`
   margin-bottom: 80px;
-
   .ant-table-tbody > tr.ant-table-row:hover > td,
   .ant-table-tbody > tr.ant-table-row.even:hover > td,
   .ant-table-tbody > tr.ant-table-row.odd:hover > td,
@@ -140,26 +140,6 @@ export const PaginationWrapper = styled.div`
   }
 `;
 
-export const OcppMessage = styled.p`
-  padding: ${({ theme }) => theme.spacing.space_24} 0;
-  font-weight: 600;
-  color: ${({ theme }) => theme.colors.blackChart};
-  text-align: center;
-  border-top: 1px solid ${({ theme }) => theme.colors.darkGrey};
-`;
-
-export const OcppProxyInfo = styled.div`
-  position: absolute;
-  left: 0;
-  bottom: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 5px 10px;
-  background-color: ${({ theme }) => theme.colors.blue05};
-
-  svg {
-    margin-right: 18px;
-  }
+export const StyledLink = styled(Link)`
+  color: ${({ theme }) => theme.colors.blue02};
 `;

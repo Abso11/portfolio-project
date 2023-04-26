@@ -1,9 +1,10 @@
 export const appRoutes = {
   app: {
-    dashboard: '/'
-  },
-  error: {
-    base: '/error',
-    notFound: '/not-found'
+    dashboard: 'dashboard',
+    dashboardDetails: 'dashboard/:id/details',
+    error: {
+      base: '/error',
+      notFound: '/not-found'
+    }
   }
 };
