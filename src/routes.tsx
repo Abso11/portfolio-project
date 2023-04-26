@@ -2,7 +2,7 @@ import { useParams } from 'react-router';
 import { BrowserRouter, Routes as ReactRoutes, Route, Navigate } from 'react-router-dom';
 import MainLayout from 'components/main-layout';
 import { Dashboard } from 'views';
-import { UserDetails } from 'views/user-details';
+import { UserData } from 'views/user-data';
 import { appRoutes } from 'urls';
 
 type PagePathTypes = {
@@ -20,7 +20,7 @@ const Routes = (): JSX.Element => (
       <Route path={''} element={<MainLayout />}>
         <Route path={appRoutes.app.dashboard} element={<Navigate to={'/'} />} />
         <Route index element={<Dashboard />} />
-        <Route path={appRoutes.app.dashboardDetails} element={<UserDetails />} />
+        <Route path={appRoutes.app.dashboardDetails} element={<UserData />} />
         <Route
           path={`${appRoutes.app.dashboard}/:id`}
           element={<RedirectToDetailsPage pagePath={appRoutes.app.dashboardDetails} />}
