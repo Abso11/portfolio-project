@@ -77,4 +77,8 @@ export default createGlobalStyle`
   b {
     font-size: inherit;
   }
+
+  .ant-divider-horizontal {
+    margin: 0;
+  }
 `;

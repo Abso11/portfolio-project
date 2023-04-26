@@ -1,5 +1,5 @@
 import { setupServer } from 'msw/node';
-import { dashboardHandler } from './handlers';
+import { dashboardHandler, userDetailsHandler } from './handlers';
 
 // This configures a request mocking server with the given request handlers.
-export const server = setupServer(...dashboardHandler);
+export const server = setupServer(...dashboardHandler, ...userDetailsHandler);
