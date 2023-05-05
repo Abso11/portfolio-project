@@ -1,7 +1,7 @@
 import apiPaths from 'utils/api-paths';
 import { rest } from 'msw';
 import { generatePath } from 'react-router';
-import { UpdateUserDetailsReq, UserDetailsRes } from 'components/user-details/user-details.types';
+import { UpdateUserDetailsReq } from 'components/user-details/user-details.types';
 import { userDetailsData } from 'mocks/responses/user-details.fixtures';
 
 const {
@@ -28,25 +28,25 @@ export const userDetailsHandler = [
   }),
   rest.patch(generatePath(USER_DETAILS, { id: ':id' }), (req, res, ctx) => {
     const { id } = req.params;
-    const existingSiteIndex = userDetailsData.findIndex((item) => item.id === id);
+    const existingUserIndex = userDetailsData.findIndex((item) => item.id === id);
 
-    const existingUser = userDetailsData[existingSiteIndex];
+    const existingUser = userDetailsData[existingUserIndex];
 
     if (!id) {
       return res(ctx.status(400), ctx.json({ errorMessage: 'ID is required' }));
     }
 
     if (!existingUser) {
-      return res(ctx.status(404), ctx.json({ errorMessage: 'Site with that id does not exists' }));
+      return res(ctx.status(404), ctx.json({ errorMessage: 'User with that id does not exists' }));
     }
 
-    const updatedSite = {
+    const updatedUser = {
       ...existingUser,
       ...(req.body as UpdateUserDetailsReq)
     };
 
-    userDetailsData[existingSiteIndex] = updatedSite;
+    userDetailsData[existingUserIndex] = updatedUser;
 
-    return res(ctx.status(200), ctx.json(updatedSite));
+    return res(ctx.status(200), ctx.json(updatedUser));
   })
 ];

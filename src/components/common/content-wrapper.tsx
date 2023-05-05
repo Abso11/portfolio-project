@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { ErrorOverlay } from './error-overlay';
 import Spinner from './spinner';
 
@@ -12,7 +12,15 @@ type Props = {
   children: ReactNode;
 };
 
-const ContentWrapper: FC<Props> = ({ children, isError, isLoading, refetch, isSmallTile, noData, noDataComponent }) => (
+const ContentWrapper = ({
+  children,
+  isError,
+  isLoading,
+  refetch,
+  isSmallTile,
+  noData,
+  noDataComponent
+}: Props): JSX.Element => (
   <>
     {isLoading && <Spinner />}
     {isError && !isLoading && !isSmallTile && <ErrorOverlay onClick={refetch} />}

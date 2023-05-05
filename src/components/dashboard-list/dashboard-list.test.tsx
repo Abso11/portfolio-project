@@ -1,4 +1,5 @@
-import { fireEvent, render, screen, waitFor, waitForElementToBeRemoved } from 'tests';
+import { act, fireEvent, render, screen, waitFor, waitForElementToBeRemoved } from 'tests';
+import userEvent from '@testing-library/user-event';
 import jest from 'jest-mock';
 import { rest } from 'msw';
 import { server } from 'mocks';
@@ -12,7 +13,7 @@ const {
   DASHBOARD: { TEST }
 } = apiPaths;
 
-describe('OCPP Logs', () => {
+describe('Dashboard List', () => {
   describe('Common', () => {
     it('should render basic elements', async () => {
       render(<DashboardList />);
@@ -61,6 +62,35 @@ describe('OCPP Logs', () => {
         expect(mockParams).toHaveBeenCalledWith(expect.stringContaining('skip=10'));
         expect(await screen.findByText(logFromSecondPage?.user_id as string)).toBeInTheDocument();
       });
+    });
+
+    it('check if the text is visible after choose 20 / page', async () => {
+      render(<DashboardList />);
+      await waitForElementToBeRemoved(() => screen.getByTestId('spinner'));
+
+      expect(screen.queryByText('user12')).not.toBeInTheDocument();
+
+      const sizeChanger = await screen.findByText('10 per page');
+
+      await userEvent.click(sizeChanger);
+
+      const mockUrl = jest.fn();
+      const mockParams = jest.fn();
+      server.events.on('request:end', (req) => {
+        mockUrl(req.url.href);
+        mockParams(req.url.search);
+      });
+
+      const sizeChanger2 = await screen.findByText('20 per page');
+
+      await act(async () => {
+        await waitFor(() => fireEvent.click(sizeChanger2));
+      });
+
+      await waitFor(() => expect(mockUrl).toHaveBeenCalledWith(expect.stringContaining('test')));
+      expect(mockParams).toHaveBeenCalledWith(expect.stringContaining('take=20'));
+
+      expect(await screen.findByText('user12')).toBeInTheDocument();
     });
   });
 });

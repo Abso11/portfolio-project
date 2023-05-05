@@ -26,10 +26,10 @@ export const dashboardHandler = [
       return res(ctx.status(400), ctx.json({ errorMessage: 'Skip is required' }));
     }
 
-    let logs: DashboardListRes['logs'] = [];
+    let dashboardList: DashboardListRes['logs'] = [];
 
     if (sortOrder && sortField) {
-      logs = orderBy(mockedDashboardList, [sortField], sortOrder === 'desc' ? 'desc' : 'asc');
+      dashboardList = orderBy(mockedDashboardList, [sortField], sortOrder === 'desc' ? 'desc' : 'asc');
     }
 
     // if (startDate && endDate) {
@@ -37,8 +37,8 @@ export const dashboardHandler = [
     // }
 
     const response: DashboardListRes = {
-      records_count: logs.length,
-      logs: logs.slice(Number(skip), Number(skip) + Number(take))
+      records_count: dashboardList.length,
+      logs: dashboardList.slice(Number(skip), Number(skip) + Number(take))
     };
 
     return res(ctx.delay(300), ctx.status(200), ctx.json(response));

@@ -3,7 +3,7 @@
   "env": {
     "browser": true,
     "es6": true,
-    "jest": true
+    "jest": true,
   },
   "settings": {
     "react": {
@@ -27,7 +27,12 @@
     "prettier"
   ],
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
     "import/order": [
       "error",
       {
