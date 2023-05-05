@@ -15,9 +15,7 @@
     "update-packages": "npm-check-updates -u -e 2 -t patch"
   },
   "jest": {
-    "setupFilesAfterEnv": [
-      "<rootDir>/setupTests.ts"
-    ],
+
     "watchPathIgnorePatterns": [
       "<rootDir>/src/mocks",
       "<rootDir>/src/tests"
@@ -45,6 +43,8 @@
     "@tanstack/react-query": "4.18.0",
     "@tanstack/react-query-devtools": "4.18.0",
     "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/jest": "^29.5.1",
     "@types/lodash.find": "^4.6.7",
     "@types/lodash.isempty": "^4.4.7",
     "@types/lodash.isequal": "^4.5.6",

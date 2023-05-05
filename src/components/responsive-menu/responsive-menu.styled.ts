@@ -54,7 +54,7 @@ export const Nav = styled.nav<{ isOpened: boolean }>`
   padding-top: 14px;
   background-color: inherit;
   transition: top 0.4s ease-in-out;
-  overflow-y: scroll;
+  overflow-y: auto;
   z-index: 101;
 
   ul {
