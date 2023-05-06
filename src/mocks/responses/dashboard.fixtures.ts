@@ -9,8 +9,8 @@ export const mockedDashboardList: DashboardListRes['logs'] = [
   {
     id: '1',
     timestamp: today,
-    action: 'Created',
-    user_id: 'user1',
+    action: 'Existing',
+    user_id: 'user123',
     user_name: 'Pawel',
     status: 'Created',
     error_code: '123',

@@ -2,7 +2,7 @@ import { UserDetailsRes } from 'components/user-details/user-details.types';
 
 export const userDetailsData: UserDetailsRes[] = [
   {
-    id: 'user1',
+    id: 'user123',
     name: 'User Details1',
     timezone: 'Europe/Amsterdam',
     budget: 10000,

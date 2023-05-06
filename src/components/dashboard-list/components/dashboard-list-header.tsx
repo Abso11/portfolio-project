@@ -1,5 +1,4 @@
 import { useState, Dispatch, SetStateAction } from 'react';
-import { useTranslation } from 'react-i18next';
 import { SearchBarWithHints } from 'components/common/searchbar-with-hints';
 import { useDebounce } from 'hooks';
 import { ListQuery } from 'types';
@@ -12,9 +11,7 @@ type Props = {
   setListQuery: Dispatch<SetStateAction<ListQuery>>;
 };
 
-export const DashboardListHeader = ({ onRangeChange, listQuery, setListQuery }: Props): JSX.Element => {
-  const { t } = useTranslation();
-
+export const DashboardListHeader = ({ listQuery, setListQuery }: Props): JSX.Element => {
   const [searchText, setSearchText] = useState<string>('');
   const debouncedValue = useDebounce<string>(searchText);
 
