@@ -4,10 +4,12 @@ import { OrderDirection } from 'enums';
 import { useListQuery } from 'hooks';
 import { usePaginationHelpers } from 'hooks/use-pagination-helpers';
 import Spinner from 'components/common/spinner';
+import { ReactComponent as ExpandIcon } from 'assets/icons/expand-icon.svg';
 import { useFetchDashboardList } from './dashboard-list.hooks';
-import { PaginationWrapper, TableWrapper } from './dashboard-list.styled';
+import { PaginationWrapper, TableWrapper, ExpandSwitch } from './dashboard-list.styled';
 import { columns } from './dashboard-list.columns';
 import { today, yesterday } from './dashboard-list.constants';
+import { DashboardListHeader } from './components';
 
 export const DashboardList = (): JSX.Element => {
   const { listQuery, setListQuery } = useListQuery('timestamp', {
@@ -16,10 +18,11 @@ export const DashboardList = (): JSX.Element => {
   });
   const { data, isError, isLoading, refetch, isFetching } = useFetchDashboardList(listQuery);
 
-  const { handleTableChange, handlePaginationChange } = usePaginationHelpers(setListQuery);
+  const { handleTableChange, handlePaginationChange, handleRangeChange } = usePaginationHelpers(setListQuery);
 
   return (
     <ContentWrapper isError={isError} refetch={refetch} isLoading={false} noData={!isLoading && isError}>
+      <DashboardListHeader onRangeChange={handleRangeChange} listQuery={listQuery} setListQuery={setListQuery} />
       <TableWrapper>
         <Table
           dataSource={data?.logs}
@@ -34,6 +37,14 @@ export const DashboardList = (): JSX.Element => {
           rowKey={(row) => row.id}
           pagination={false}
           rowClassName={(_, index) => (index % 2 ? 'even' : 'odd')}
+          expandable={{
+            expandedRowRender: () => <></>,
+            expandIcon: ({ expanded, onExpand, record }) => (
+              <ExpandSwitch isExpanded={expanded} onClick={(e) => onExpand(record, e)}>
+                <ExpandIcon />
+              </ExpandSwitch>
+            )
+          }}
           scroll={{ x: 1500 }}
         />
         <PaginationWrapper>

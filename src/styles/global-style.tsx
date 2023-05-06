@@ -1,9 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
-import { antdTable, antdPagination } from './components';
+import { antdTable, antdPagination, antdSearchbar } from './components';
 
 export default createGlobalStyle`
   ${antdTable}
   ${antdPagination}
+  ${antdSearchbar}
 
   * {
     box-sizing: border-box;

@@ -1,3 +1,7 @@
+export type DashBoardListReqFilter = {
+  [key in 'action' | 'user_id' | 'status']: string;
+};
+
 export type DashboardListReq = {
   sort_field: 'timestamp' | 'action' | 'site_name';
   sort_order: 'asc' | 'desc';
@@ -5,6 +9,7 @@ export type DashboardListReq = {
   take: number;
   start_date: Date;
   end_date: Date;
+  filter?: DashBoardListReqFilter;
 };
 
 export type DashboardListRes = {
@@ -22,5 +27,16 @@ export type DashboardListRes = {
   }[];
   records_count: number;
 };
+
+export type DashboardListHintsReq = {
+  start_date: Date;
+  end_date: Date;
+  search_text: string;
+};
+
+export type DashBoardListHintsRes = {
+  value: string;
+  key: string;
+}[];
 
 export type DashboardListSortableFields = 'timestamp' | 'action' | 'site_name';
