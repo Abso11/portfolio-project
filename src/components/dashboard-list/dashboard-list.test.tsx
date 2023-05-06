@@ -6,6 +6,7 @@ import { rest } from 'msw';
 import { server } from 'mocks';
 import apiPaths from 'utils/api-paths';
 import { mockedDashboardList } from 'mocks/responses';
+import { format } from 'date-fns';
 import { DashboardList, DashboardListRes } from '.';
 
 const columnTitles = ['Timestamp', 'Action', 'User id', 'User Name', 'Status', 'Error code'];
@@ -92,6 +93,40 @@ describe('Dashboard List', () => {
       expect(mockParams).toHaveBeenCalledWith(expect.stringContaining('take=20'));
 
       expect(await screen.findByText('user12')).toBeInTheDocument();
+    });
+  });
+
+  describe('Date picker', () => {
+    it('should refresh data when date range is changed', async () => {
+      const twoDaysAgo = new Date();
+      twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
+      twoDaysAgo.setHours(0, 0, 0, 0);
+      const twoDaysAgoDate = format(twoDaysAgo, 'yyyy-MM-dd');
+
+      render(<DashboardList />);
+      await waitForElementToBeRemoved(() => screen.getByTestId('spinner'));
+
+      const datePickerInput = screen.getByPlaceholderText('Start date');
+
+      await act(async () => {
+        await waitFor(() => fireEvent.mouseDown(datePickerInput));
+      });
+
+      const pickerDateOption = await screen.findByTitle(twoDaysAgoDate);
+      userEvent.click(pickerDateOption);
+
+      const confirmDateBtn = screen.getByRole('button', { name: 'Confirm' });
+      userEvent.click(confirmDateBtn);
+
+      const mockUrl = jest.fn();
+      const mockParams = jest.fn();
+      server.events.on('request:end', (req) => {
+        mockUrl(req.url.href);
+        mockParams(req.url.search);
+      });
+
+      await waitFor(() => expect(mockUrl).toHaveBeenCalledWith(expect.stringContaining(apiPaths.DASHBOARD.TEST)));
+      expect(mockParams).toHaveBeenCalledWith(expect.stringContaining(`start_date=${twoDaysAgoDate}`));
     });
   });
 

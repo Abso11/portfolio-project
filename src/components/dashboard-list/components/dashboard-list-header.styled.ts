@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mediaQuery } from 'styles';
+import { media } from 'styles';
 
 export const FilterWrapper = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ export const FilterWrapper = styled.div`
   padding: ${({ theme: { spacing } }) => `20px ${spacing.space_24} ${spacing.space_16}`};
   background: ${({ theme }) => theme.colors.white};
 
-  ${mediaQuery.tabletMini} {
+  ${media.tablet} {
     flex-wrap: wrap;
   }
 
@@ -18,7 +18,7 @@ export const FilterWrapper = styled.div`
     margin-right: 40px;
     min-width: 330px;
 
-    ${mediaQuery.tabletMini} {
+    ${media.tablet} {
       margin-right: 0;
     }
   }

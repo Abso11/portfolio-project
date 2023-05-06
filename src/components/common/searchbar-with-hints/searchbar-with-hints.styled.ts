@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import zIndex from 'styles/zIndex';
-import { mediaQuery } from 'styles';
 import { SearchbarComponent } from './elements';
 
 export const HintsWrapper = styled.ul<{ isVisible: boolean }>`
@@ -25,10 +24,6 @@ export const StyledSearchbar = styled(SearchbarComponent)<{ withTags?: boolean }
 
   :focus-within {
     background: none;
-  }
-
-  ${mediaQuery.tabletMini} {
-    margin-top: 10px;
   }
 `;
 
