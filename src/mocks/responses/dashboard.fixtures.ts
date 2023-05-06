@@ -26,7 +26,7 @@ export const mockedDashboardList: DashboardListRes['logs'] = [
     action: 'Created',
     user_id: 'user2',
     user_name: 'Piotr',
-    status: 'Created',
+    status: 'New',
     error_code: '123',
     details: {
       description: 'example description',
@@ -40,7 +40,7 @@ export const mockedDashboardList: DashboardListRes['logs'] = [
     action: 'Created',
     user_id: 'user3',
     user_name: 'Jan',
-    status: 'Created',
+    status: 'Older',
     error_code: '123',
     details: {
       description: 'example description',
@@ -54,7 +54,7 @@ export const mockedDashboardList: DashboardListRes['logs'] = [
     action: 'Created',
     user_id: 'user4',
     user_name: 'John',
-    status: 'Created',
+    status: 'Older',
     error_code: '123',
     details: {
       description: 'example description',
@@ -68,7 +68,7 @@ export const mockedDashboardList: DashboardListRes['logs'] = [
     action: 'Created',
     user_id: 'user5',
     user_name: 'Piotr',
-    status: 'Created',
+    status: 'New',
     error_code: '123',
     details: {
       description: 'example description',

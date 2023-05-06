@@ -5,7 +5,14 @@ import apiPaths from 'utils/api-paths';
 import { ListQuery } from 'types';
 import { usePaginationConfig } from 'hooks/use-pagination-config';
 import { OrderDirection, SortOrder } from 'enums';
-import { DashboardListReq, DashboardListRes, DashboardListSortableFields } from './dashboard-list.types';
+import {
+  DashBoardListHintsRes,
+  DashBoardListReqFilter,
+  DashboardListHintsReq,
+  DashboardListReq,
+  DashboardListRes,
+  DashboardListSortableFields
+} from './dashboard-list.types';
 
 const fetchDashboardList = async (request: DashboardListReq): Promise<DashboardListRes> => {
   const {
@@ -17,9 +24,9 @@ const fetchDashboardList = async (request: DashboardListReq): Promise<DashboardL
 };
 
 export const useFetchDashboardList = (listQuery: ListQuery): UseQueryResult<DashboardListRes, Error> => {
-  const { skip, take, sortField, sortOrder, startDate, endDate } = usePaginationConfig(listQuery);
+  const { skip, take, sortField, sortOrder, startDate, endDate, filter } = usePaginationConfig(listQuery);
   return useQueryWithError(
-    ['DashboardList', skip, take, sortOrder, sortField, startDate, endDate],
+    ['DashboardList', skip, take, sortOrder, sortField, startDate, endDate, filter],
     () =>
       fetchDashboardList({
         skip,
@@ -27,10 +34,40 @@ export const useFetchDashboardList = (listQuery: ListQuery): UseQueryResult<Dash
         sort_order: sortOrder === OrderDirection.ASC ? SortOrder.ASC : SortOrder.DESC,
         sort_field: sortField as DashboardListSortableFields,
         start_date: startDate as Date,
-        end_date: endDate as Date
+        end_date: endDate as Date,
+        filter: filter as DashBoardListReqFilter
       }),
     {
       refetchOnWindowFocus: false
+    }
+  );
+};
+
+const fetchDashboardListHints = async (request: DashboardListHintsReq): Promise<DashBoardListHintsRes> => {
+  const {
+    DASHBOARD: { DASHBOARD_LIST_HINTS }
+  } = apiPaths;
+
+  const { data } = await getData<DashboardListHintsReq, DashBoardListHintsRes>(DASHBOARD_LIST_HINTS, request);
+  return data;
+};
+
+export const useDashboardListHints = (
+  listQuery: ListQuery,
+  searchText: string
+): UseQueryResult<DashBoardListHintsRes> => {
+  const { startDate, endDate } = usePaginationConfig(listQuery);
+  return useQueryWithError(
+    ['DashboardListHints', startDate, endDate, searchText],
+    () =>
+      fetchDashboardListHints({
+        start_date: startDate as Date,
+        end_date: endDate as Date,
+        search_text: searchText
+      }),
+    {
+      refetchOnWindowFocus: false,
+      enabled: false
     }
   );
 };
