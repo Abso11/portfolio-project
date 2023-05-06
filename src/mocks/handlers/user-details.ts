@@ -11,7 +11,7 @@ const {
 export const userDetailsHandler = [
   rest.get(generatePath(USER_DETAILS, { id: ':id' }), (req, res, ctx) => {
     const { id } = req.params;
-    console.log(id);
+
     if (!id) {
       return res(ctx.status(400), ctx.json({ errorMessage: 'ID is required' }));
     }

@@ -2,7 +2,9 @@ import { useState, Dispatch, SetStateAction } from 'react';
 import { SearchBarWithHints } from 'components/common/searchbar-with-hints';
 import { useDebounce } from 'hooks';
 import { ListQuery } from 'types';
+import { ViewDatePicker } from 'components/common/view-date-picker';
 import { useDashboardListHints } from '../dashboard-list.hooks';
+import { yearAgo } from '../dashboard-list.constants';
 import { FilterWrapper } from './dashboard-list-header.styled';
 
 type Props = {
@@ -11,7 +13,7 @@ type Props = {
   setListQuery: Dispatch<SetStateAction<ListQuery>>;
 };
 
-export const DashboardListHeader = ({ listQuery, setListQuery }: Props): JSX.Element => {
+export const DashboardListHeader = ({ onRangeChange, listQuery, setListQuery }: Props): JSX.Element => {
   const [searchText, setSearchText] = useState<string>('');
   const debouncedValue = useDebounce<string>(searchText);
 
@@ -40,6 +42,13 @@ export const DashboardListHeader = ({ listQuery, setListQuery }: Props): JSX.Ele
 
   return (
     <FilterWrapper>
+      <ViewDatePicker
+        onSave={onRangeChange}
+        startDate={listQuery.start_date as Date}
+        endDate={listQuery.end_date as Date}
+        disableBefore={yearAgo}
+        showTimeFormat='HH:mm'
+      />
       <SearchBarWithHints
         data={hints?.map(({ key, value }) => ({ field: key, text: value }))}
         isFetching={isFetching}

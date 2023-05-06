@@ -15,8 +15,8 @@ export const dashboardHandler = [
     const take = req.url.searchParams.get('take');
     const sortOrder = req.url.searchParams.get('sort_order');
     const sortField = req.url.searchParams.get('sort_field');
-    // const startDate = req.url.searchParams.get('start_date');
-    // const endDate = req.url.searchParams.get('end_date');
+    const startDate = req.url.searchParams.get('start_date');
+    const endDate = req.url.searchParams.get('end_date');
     const filterId = req.url.searchParams.get('filter[user_id]');
     const filterStatus = req.url.searchParams.get('filter[status]');
     const filterAction = req.url.searchParams.get('filter[action]');
@@ -35,9 +35,11 @@ export const dashboardHandler = [
       dashboardList = orderBy(mockedDashboardList, [sortField], sortOrder === 'desc' ? 'desc' : 'asc');
     }
 
-    // if (startDate && endDate) {
-    //   logs = logs.filter(({ timestamp }) => timestamp >= new Date(startDate) && timestamp <= new Date(endDate));
-    // }
+    if (startDate && endDate) {
+      dashboardList = dashboardList.filter(
+        ({ timestamp }) => timestamp >= new Date(startDate) && timestamp <= new Date(endDate)
+      );
+    }
 
     if (filterId) {
       dashboardList = dashboardList.filter((item) => item.user_id.toLowerCase() === filterId.toLowerCase());
