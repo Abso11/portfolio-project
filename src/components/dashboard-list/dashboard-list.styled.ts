@@ -115,3 +115,10 @@ export const PaginationWrapper = styled.div`
 export const StyledLink = styled(Link)`
   color: ${({ theme }) => theme.colors.blue02};
 `;
+
+export const StyledEditButton = styled.div`
+  margin-top: 6px;
+  :hover {
+    cursor: pointer;
+  }
+`;
