@@ -3,14 +3,27 @@ import { format } from 'date-fns';
 import { AntdColumnTitle } from 'components/common/antd-column-title';
 import { OrderDirection } from 'enums';
 import { appRoutes } from 'urls';
+import { AlignType } from 'rc-table/lib/interface';
+import { ReactComponent as EditIcon } from 'assets/icons/edit.svg';
 import { DashboardListRes } from './dashboard-list.types';
-import { StyledLink } from './dashboard-list.styled';
+import { StyledEditButton, StyledLink } from './dashboard-list.styled';
 
 export const formatDate = (date: Date): string => format(new Date(date), 'dd.MM.yyyy HH:mm');
 
 type Column = DashboardListRes['logs'][0];
 
-export const columns: ColumnsType<Column> = [
+export const useColumns = (handleOpenSidebar: (id: string) => void): ColumnsType<Column> => [
+  {
+    key: 'actions',
+    align: 'left' as AlignType,
+    fixed: 'left' as const,
+    width: 30,
+    render: (_, record) => (
+      <StyledEditButton>
+        <EditIcon onClick={() => handleOpenSidebar(record.user_id)} />
+      </StyledEditButton>
+    )
+  },
   {
     title: ({ sortColumns }) => <AntdColumnTitle dataIndex='timestamp' sortColumns={sortColumns} name={'Timestamp'} />,
     dataIndex: 'timestamp',
