@@ -40,3 +40,9 @@ export type DashBoardListHintsRes = {
 }[];
 
 export type DashboardListSortableFields = 'timestamp' | 'action' | 'site_name';
+
+export type UpdateDashboardListReq = {
+  action: string;
+  user_name: string;
+  user_id: string;
+};

@@ -1,7 +1,11 @@
 import { rest } from 'msw';
 import apiPaths from 'utils/api-paths';
 import { mockedDashboardList } from 'mocks/responses/dashboard.fixtures';
-import { DashBoardListHintsRes, DashboardListRes } from 'components/dashboard-list/dashboard-list.types';
+import {
+  DashBoardListHintsRes,
+  DashboardListRes,
+  UpdateDashboardListReq
+} from 'components/dashboard-list/dashboard-list.types';
 import orderBy from 'lodash.orderby';
 import { sortBy, uniqBy } from 'lodash';
 
@@ -59,6 +63,31 @@ export const dashboardHandler = [
     };
 
     return res(ctx.delay(300), ctx.status(200), ctx.json(response));
+  }),
+
+  rest.patch(`*${TEST}`, (req, res, ctx) => {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    const { user_id } = req.body as UpdateDashboardListReq;
+    const existingUserIndex = mockedDashboardList.findIndex((item) => item.user_id === user_id);
+
+    const existingUser = mockedDashboardList[existingUserIndex];
+
+    if (!user_id) {
+      return res(ctx.status(400), ctx.json({ errorMessage: 'ID is required' }));
+    }
+
+    if (!existingUser) {
+      return res(ctx.status(404), ctx.json({ errorMessage: 'User with that id does not exists' }));
+    }
+
+    const updatedUser = {
+      ...existingUser,
+      ...(req.body as UpdateDashboardListReq)
+    };
+
+    mockedDashboardList[existingUserIndex] = updatedUser;
+
+    return res(ctx.status(200), ctx.json(updatedUser));
   }),
 
   rest.get(`*${DASHBOARD_LIST_HINTS}`, (req, res, ctx) => {

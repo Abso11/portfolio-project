@@ -1,17 +1,19 @@
 import useQueryWithError from 'hooks/use-query-with-error';
-import { UseQueryResult } from '@tanstack/react-query';
-import { getData } from 'utils/api-helpers';
+import { UseMutateAsyncFunction, UseQueryResult } from '@tanstack/react-query';
+import { getData, patchData } from 'utils/api-helpers';
 import apiPaths from 'utils/api-paths';
 import { ListQuery } from 'types';
 import { usePaginationConfig } from 'hooks/use-pagination-config';
 import { OrderDirection, SortOrder } from 'enums';
+import { useMutationWithError } from 'hooks';
 import {
   DashBoardListHintsRes,
   DashBoardListReqFilter,
   DashboardListHintsReq,
   DashboardListReq,
   DashboardListRes,
-  DashboardListSortableFields
+  DashboardListSortableFields,
+  UpdateDashboardListReq
 } from './dashboard-list.types';
 
 const fetchDashboardList = async (request: DashboardListReq): Promise<DashboardListRes> => {
@@ -70,4 +72,35 @@ export const useDashboardListHints = (
       enabled: false
     }
   );
+};
+
+const saveUserOnDashboardList = async (payload: UpdateDashboardListReq): Promise<void> => {
+  const {
+    DASHBOARD: { TEST }
+  } = apiPaths;
+
+  const { data } = await patchData<UpdateDashboardListReq, void>(TEST, payload);
+  return data;
+};
+
+type UseSaveSiteDetails = {
+  isSaving: boolean;
+  saveUserData: UseMutateAsyncFunction<void, unknown, UpdateDashboardListReq, unknown>;
+};
+
+export const useSaveUserDashboardData = (onError: () => void): UseSaveSiteDetails => {
+  const { mutateAsync: saveUserData, isLoading: isSaving } = useMutationWithError(
+    (formValues: UpdateDashboardListReq) => saveUserOnDashboardList(formValues),
+    {
+      errorMessage: 'error',
+      successMessage: 'success',
+      invalidateQueryKey: 'DashboardList',
+      onError
+    }
+  );
+
+  return {
+    saveUserData,
+    isSaving
+  };
 };

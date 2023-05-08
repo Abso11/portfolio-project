@@ -6,17 +6,16 @@ import { usePaginationHelpers } from 'hooks/use-pagination-helpers';
 import Spinner from 'components/common/spinner';
 import { ReactComponent as ExpandIcon } from 'assets/icons/expand-icon.svg';
 import { useState } from 'react';
-import { AntdSidebar } from 'components/common/sidebar';
 import { useFetchDashboardList } from './dashboard-list.hooks';
 import { PaginationWrapper, TableWrapper, ExpandSwitch } from './dashboard-list.styled';
 import { useColumns } from './dashboard-list.columns';
 import { today, yesterday } from './dashboard-list.constants';
-import { DashboardListHeader } from './components';
+import { DashboardListHeader, DashboardListEditForm } from './components';
 
 export const DashboardList = (): JSX.Element => {
   const [isSidebarVisible, setIsSidebarVisible] = useState<boolean>(false);
-  const [selectedUserid, setSelectedUserId] = useState<string>('');
-  console.log(selectedUserid);
+  const [selectedUserId, setSelectedUserId] = useState<string>('');
+
   const { listQuery, setListQuery } = useListQuery('timestamp', {
     start_date: yesterday,
     end_date: today
@@ -35,6 +34,8 @@ export const DashboardList = (): JSX.Element => {
   };
 
   const columns = useColumns(handleOpenSidebar);
+
+  const initialValues = data?.logs.filter(({ user_id }) => user_id === selectedUserId);
 
   return (
     <>
@@ -78,16 +79,15 @@ export const DashboardList = (): JSX.Element => {
           </PaginationWrapper>
         </TableWrapper>
       </ContentWrapper>
-      <AntdSidebar open={isSidebarVisible} onCloseSidebar={handleCloseSidebar} onCancel={handleCloseSidebar}>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-      </AntdSidebar>
+      <DashboardListEditForm
+        user_id={selectedUserId as string}
+        isSidebarVisible={isSidebarVisible}
+        initialValues={{
+          user_name: initialValues?.[0]?.user_name as string,
+          action: initialValues?.[0]?.action as string
+        }}
+        onCloseSidebar={handleCloseSidebar}
+      />
     </>
   );
 };

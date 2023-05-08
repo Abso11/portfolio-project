@@ -1,5 +1,4 @@
 import { Drawer, DrawerProps, Space, Button, Tooltip } from 'antd';
-
 import { RelativeContainer } from './sidebar.styled';
 import { Props } from './sidebar.types';
 
@@ -47,10 +46,10 @@ export const AntdSidebar = ({
               <Button
                 data-testid={dataTestId || 'test-sidebar-button'}
                 type='primary'
-                disabled={disabled}
+                disabled={disabled || false}
                 onClick={onSubmit}
               >
-                {'submit'}
+                {'Submit'}
               </Button>
             ) : (
               <Button
