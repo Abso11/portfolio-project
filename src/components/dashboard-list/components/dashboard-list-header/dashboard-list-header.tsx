@@ -3,8 +3,8 @@ import { SearchBarWithHints } from 'components/common/searchbar-with-hints';
 import { useDebounce } from 'hooks';
 import { ListQuery } from 'types';
 import { ViewDatePicker } from 'components/common/view-date-picker';
-import { useDashboardListHints } from '../dashboard-list.hooks';
-import { yearAgo } from '../dashboard-list.constants';
+import { useDashboardListHints } from 'components/dashboard-list/dashboard-list.hooks';
+import { yearAgo } from 'components/dashboard-list/dashboard-list.constants';
 import { FilterWrapper } from './dashboard-list-header.styled';
 
 type Props = {

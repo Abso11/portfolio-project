@@ -5,7 +5,7 @@ Repository contains UI application called Portfolio Project. Please see instruct
 ## Development
 To develop this project you should run `yarn` and then `yarn start`.
 
-This script runs the application in the development mode. Open [http://localhost:9001](http://localhost:9001) to view it in the browser.
+This script runs the application in the development mode. Open [http://localhost:9000](http://localhost:9000) to view it in the browser.
 
 
 ### Commit changes
