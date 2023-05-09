@@ -16,6 +16,7 @@ type Props = {
 };
 
 const { RangePicker } = DatePicker;
+
 enLang.lang.ok = 'Confirm';
 
 export const ViewDatePicker = ({

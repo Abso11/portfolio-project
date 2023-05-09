@@ -1,0 +1,50 @@
+{
+  "loading-data": "Ładowanie danych",
+  "no-data": "Brak danych",
+  "save-button": "Zapisz",
+  "cancel": "Anuluj",
+  "delete": "Usuń",
+  "edit": "Edytuj",
+  "save-success": "Zapisano zmiany pomyślnie",
+  "save-error": "Nie można zapisać zmian",
+  "data-error": "Nie pobrano danych",
+  "refresh": "Odśwież",
+  "try-to-refresh": "Przeładuj dane",
+  "dashboard-list": {
+    "timestamp": "Czas",
+    "action": "Akcja",
+    "user_id": "Id użytkownika",
+    "user_name": "Nazwa użytkownika",
+    "status": "Status",
+    "error_code": "Kod błędu",
+    "description": "Opis",
+    "error": "Błąd",
+    "searching-for": "Szukaj: ",
+    "under": "pod",
+    "per-page": "na strone",
+    "header": "Szukaj użytkowników..."
+  },
+  "dashboard-details": {
+    "name": "Nazwa",
+    "timezone": "Strefa czasowa",
+    "user-id": "Id użytkownika",
+    "budget": "Budżet",
+    "additional-information": "Dodatkowe informacje",
+    "phone": "Telefon",
+    "country": "Kraj",
+    "age": "Wiek",
+    "gender": "Płeć"
+  },
+  "dashboard-list-edit-form": {
+    "edit-user": "Edytowanie użytkownika: ",
+    "user-name": "Nazwa użytkownika",
+    "action": "Akcja"
+  },
+  "dashboard-details-modal": {
+   "edit": "Edytuj użytkownika"
+  },
+  "menu": {
+    "dashboard-list": "Lista główna",
+    "user-details": "Sczegóły użytkownika"
+  }
+}

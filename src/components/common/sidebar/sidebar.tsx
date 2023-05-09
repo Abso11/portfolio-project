@@ -1,4 +1,5 @@
 import { Drawer, DrawerProps, Space, Button, Tooltip } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { RelativeContainer } from './sidebar.styled';
 import { Props } from './sidebar.types';
 
@@ -15,6 +16,7 @@ export const AntdSidebar = ({
   dataTestId,
   ...rest
 }: Props & DrawerProps): JSX.Element => {
+  const { t } = useTranslation();
   const handleOnClose = (): void => {
     if (!isTouched) {
       onCloseSidebar();
@@ -34,11 +36,11 @@ export const AntdSidebar = ({
         {...rest}
         extra={
           <Space>
-            <Button onClick={onCancel}>{'Cancel'}</Button>
+            <Button onClick={onCancel}>{t('cancel')}</Button>
             {isDeleteButtonVisible && (
-              <Tooltip zIndex={99999999999} title={'delete'}>
+              <Tooltip zIndex={99999999999} title={t('delete')}>
                 <Button danger onClick={onDelete}>
-                  {'delete'}
+                  {t('delete')}
                 </Button>
               </Tooltip>
             )}
@@ -49,7 +51,7 @@ export const AntdSidebar = ({
                 disabled={disabled || false}
                 onClick={onSubmit}
               >
-                {'Submit'}
+                {t('save-button')}
               </Button>
             ) : (
               <Button
@@ -60,7 +62,7 @@ export const AntdSidebar = ({
                 type='primary'
                 disabled={disabled}
               >
-                {'submit'}
+                {t('save-button')}
               </Button>
             )}
           </Space>

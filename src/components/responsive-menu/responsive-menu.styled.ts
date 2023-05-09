@@ -75,9 +75,15 @@ export const MenuFooter = styled.div`
   margin-top: auto;
   padding: ${({ theme }) => theme.spacing.space_16};
   text-align: center;
+  margin-bottom: 70px;
 
   ${mediaQuery.desktop} {
     padding: ${({ theme }) => theme.spacing.space_32};
+    margin-bottom: 0px;
+  }
+
+  ${mediaQuery.tabletMini} {
+    margin-bottom: 0px;
   }
 
   p {

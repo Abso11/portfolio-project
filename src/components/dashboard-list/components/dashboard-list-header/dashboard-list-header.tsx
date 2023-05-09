@@ -5,6 +5,7 @@ import { ListQuery } from 'types';
 import { ViewDatePicker } from 'components/common/view-date-picker';
 import { useDashboardListHints } from 'components/dashboard-list/dashboard-list.hooks';
 import { yearAgo } from 'components/dashboard-list/dashboard-list.constants';
+import { useTranslation } from 'react-i18next';
 import { FilterWrapper } from './dashboard-list-header.styled';
 
 type Props = {
@@ -14,6 +15,7 @@ type Props = {
 };
 
 export const DashboardListHeader = ({ onRangeChange, listQuery, setListQuery }: Props): JSX.Element => {
+  const { t } = useTranslation();
   const [searchText, setSearchText] = useState<string>('');
   const debouncedValue = useDebounce<string>(searchText);
 
@@ -58,7 +60,7 @@ export const DashboardListHeader = ({ onRangeChange, listQuery, setListQuery }: 
         setSearchText={setSearchText}
         debouncedValue={debouncedValue}
         withTags
-        placeholder={'DashboardList Searchbar'}
+        placeholder={t('dashboard-list.header')}
         selectedOptions={Object.entries(listQuery.filter || {}).map(([key, value]) => ({ key, value }))}
         onDeleteFilter={handleDeleteFilter}
       />

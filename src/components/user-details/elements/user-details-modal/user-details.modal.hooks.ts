@@ -4,6 +4,7 @@ import useMutationWithError from 'hooks/use-mutation-with-error';
 import apiPaths from 'utils/api-paths';
 import { patchData } from 'utils/api-helpers';
 import { UpdateUserDetailsReq } from 'components/user-details/user-details.types';
+import { t } from 'i18next';
 
 const saveUserDetails = async (id: string, payload: UpdateUserDetailsReq): Promise<void> => {
   const {
@@ -23,8 +24,8 @@ export const useSaveUserDetails = (siteId: string, onError: () => void): UseSave
   const { mutateAsync: saveUserDetailss, isLoading: isSaving } = useMutationWithError(
     (formValues: UpdateUserDetailsReq) => saveUserDetails(siteId, formValues),
     {
-      errorMessage: 'error',
-      successMessage: 'success',
+      errorMessage: t<string>('save-error'),
+      successMessage: t<string>('save-success'),
       invalidateQueryKey: 'userDetails',
       onError
     }

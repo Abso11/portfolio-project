@@ -1,0 +1,50 @@
+{
+  "loading-data": "Loading Data",
+  "no-data": "No data",
+  "save-button": "Save",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "edit": "Edit",
+  "save-success": "Changes saved successfully",
+  "save-error": "Changes could not be saved",
+  "data-error": "Can't show data",
+  "refresh": "Refresh",
+  "try-to-refresh": "Try to refresh",
+  "dashboard-list": {
+    "timestamp": "Timestamp",
+    "action": "Action",
+    "user_id": "User id",
+    "user_name": "User Name",
+    "status": "Status",
+    "error_code": "Error code",
+    "description": "Description",
+    "error": "Error",
+    "searching-for": "Searching for: ",
+    "under": "under",
+    "per-page": "per page",
+    "header": "Search for users..."
+  },
+  "dashboard-details": {
+    "name": "Name",
+    "timezone": "Timezone",
+    "user-id": "User id",
+    "budget": "Budget",
+    "additional-information": "Additional Information",
+    "phone": "Phone",
+    "country": "Country",
+    "age": "Age",
+    "gender": "Gender"
+  },
+  "dashboard-list-edit-form": {
+    "edit-user": "Editing user",
+    "user-name": "User name",
+    "action": "Action"
+  },
+  "dashboard-details-modal": {
+   "edit": "Edit user details"
+  },
+  "menu": {
+    "dashboard-list": "Dashboard List",
+    "user-details": "User Details"
+  }
+}

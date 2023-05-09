@@ -1,5 +1,6 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { ReactComponent as RemoveIcon } from 'assets/icons/cancel.svg';
+import { useTranslation } from 'react-i18next';
 import {
   Hint,
   HintsWrapper,
@@ -25,8 +26,8 @@ export const SearchBarWithHints = ({
   selectedOptions = [],
   onDeleteFilter
 }: SearchbarWithHintsProps): JSX.Element => {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
-
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const searchText = e.target.value;
     setSearchText(searchText);
@@ -66,17 +67,17 @@ export const SearchBarWithHints = ({
       <HintsWrapper isVisible={isVisible}>
         {withTags && searchText && (
           <SearchedHints>
-            {'Dashboard List Searchbar'} “{searchText}”
+            {t('dashboard-list.searching-for')} “{searchText}”
           </SearchedHints>
         )}
-        {isFetching && <Hint>{'loading data'}</Hint>}
-        {!isFetching && data?.length === 0 && <Hint>{'no data'}</Hint>}
+        {isFetching && <Hint>{t('loading-data')}</Hint>}
+        {!isFetching && data?.length === 0 && <Hint>{t('no-data')}</Hint>}
         {!isFetching &&
           data?.map(({ field, text }) => (
             <Hint onClick={handleOnClick(field, text)} key={text} data-testid={'dashboard-list-hints'}>
               <span>{text}</span>
               <SpanField withTags={withTags}>
-                {withTags && <span>{'under'} </span>}
+                {withTags && <span>{t('dashboard-list.under')} </span>}
                 {withTags && field}
               </SpanField>
             </Hint>

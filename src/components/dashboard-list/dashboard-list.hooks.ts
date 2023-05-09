@@ -6,6 +6,7 @@ import { ListQuery } from 'types';
 import { usePaginationConfig } from 'hooks/use-pagination-config';
 import { OrderDirection, SortOrder } from 'enums';
 import { useMutationWithError } from 'hooks';
+import { t } from 'i18next';
 import {
   DashBoardListHintsRes,
   DashBoardListReqFilter,
@@ -92,8 +93,8 @@ export const useSaveUserDashboardData = (onError: () => void): UseSaveSiteDetail
   const { mutateAsync: saveUserData, isLoading: isSaving } = useMutationWithError(
     (formValues: UpdateDashboardListReq) => saveUserOnDashboardList(formValues),
     {
-      errorMessage: 'error',
-      successMessage: 'success',
+      errorMessage: t<string>('save-error'),
+      successMessage: t<string>('save-success'),
       invalidateQueryKey: 'DashboardList',
       onError
     }
