@@ -1,12 +1,10 @@
 import React, { ReactNode } from 'react';
+import { LanguageSwitcher } from 'components/common/language-switcher/language-switcher';
 import { ToggleButton } from './elements/toggle-button/toggle-button';
 import { MenuItem } from './elements/menu-item/menu-item';
 import { MenuHeader, Nav, Title, Wrapper, MenuFooter } from './responsive-menu.styled';
 
 export type MenuProps = {
-  /**
-   * a node to be rendered in the Menu component. MenuItem component is recommended to use
-   */
   children?: ReactNode;
   setIsOpened: (isOpened: boolean) => void;
   isOpened: boolean;
@@ -26,8 +24,9 @@ export const Menu = ({ children, isOpened, setIsOpened }: MenuProps): JSX.Elemen
       <Nav isOpened={isOpened}>
         <ul>{children}</ul>
         <MenuFooter>
+          <LanguageSwitcher />
           <p>Paweł Duszeńko</p>
-          <p>{new Date().getFullYear()} All Rights Reserved.</p>
+          <p>{new Date().getFullYear()} All rights reserved.</p>
         </MenuFooter>
       </Nav>
     </Wrapper>

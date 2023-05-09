@@ -7,6 +7,7 @@ import { AntdSidebar } from 'components/common/sidebar';
 import { UpdateDashboardListReq } from 'components/dashboard-list/dashboard-list.types';
 import { useEffect } from 'react';
 import { useSaveUserDashboardData } from 'components/dashboard-list/dashboard-list.hooks';
+import { useTranslation } from 'react-i18next';
 import { FormInputs, validationSchema } from './utils';
 import { StyledEditUser } from './dashboard-list-edit-form.styled';
 
@@ -24,6 +25,7 @@ export const DashboardListEditForm = ({
   onCloseSidebar
 }: Props): JSX.Element => {
   const [form] = Form.useForm();
+  const { t } = useTranslation();
 
   const { isSaveEnabled, setIsSaveEnabled } = useAntdModal(form);
 
@@ -52,12 +54,22 @@ export const DashboardListEditForm = ({
       onSubmit={form.submit}
     >
       <Spin spinning={isSaving}>
-        <StyledEditUser>Editing User: {user_id}</StyledEditUser>
+        <StyledEditUser>
+          {t('dashboard-list-edit-form.edit-user')}: {user_id}
+        </StyledEditUser>
         <Form form={form} initialValues={initialValues} onValuesChange={handleValuesChange} onFinish={handleSubmit}>
-          <FormItem name={FormInputs.USER_NAME} label={'User_name'} rules={validationSchema[FormInputs.USER_NAME]}>
+          <FormItem
+            name={FormInputs.USER_NAME}
+            label={t('dashboard-list-edit-form.user-name')}
+            rules={validationSchema[FormInputs.USER_NAME]}
+          >
             <Input />
           </FormItem>
-          <FormItem name={FormInputs.Action} label={'Action'} rules={validationSchema[FormInputs.Action]}>
+          <FormItem
+            name={FormInputs.Action}
+            label={t('dashboard-list-edit-form.action')}
+            rules={validationSchema[FormInputs.Action]}
+          >
             <Input />
           </FormItem>
         </Form>

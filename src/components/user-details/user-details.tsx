@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import find from 'lodash.find';
 import ContentWrapper from 'components/common/content-wrapper';
 import { timezones } from 'utils/timezones';
+import { useTranslation } from 'react-i18next';
 import { useFetchUserDetails } from './user-details.hooks';
 import { SectionTitles, DetailsTile, StyledWrapper, UserDetailsModal } from './elements';
 
@@ -12,7 +13,7 @@ const getTimezone = (value: string): string => {
 
 const UserDetails = (): JSX.Element => {
   const { id } = useParams();
-
+  const { t } = useTranslation();
   const { data, isError, isFetching, refetch } = useFetchUserDetails(id as string);
 
   return (
@@ -27,17 +28,17 @@ const UserDetails = (): JSX.Element => {
         }
       />
       <StyledWrapper>
-        <DetailsTile name={'Name'}>{data?.name}</DetailsTile>
-        <DetailsTile name={'Timezone'}>{getTimezone(data?.timezone as string)}</DetailsTile>
-        <DetailsTile name={'User Id'}>{data?.id}</DetailsTile>
-        <DetailsTile name={'Budget'}>{data?.budget}</DetailsTile>
+        <DetailsTile name={t('dashboard-details.name')}>{data?.name}</DetailsTile>
+        <DetailsTile name={t('dashboard-details.timezone')}>{getTimezone(data?.timezone as string)}</DetailsTile>
+        <DetailsTile name={t('dashboard-details.user-id')}>{data?.id}</DetailsTile>
+        <DetailsTile name={t('dashboard-details.budget')}>{data?.budget}</DetailsTile>
       </StyledWrapper>
-      <SectionTitles name={'Additional Information'} />
+      <SectionTitles name={t('dashboard-details.additional-information')} />
       <StyledWrapper>
-        <DetailsTile name={'Phone'}>{data?.phone}</DetailsTile>
-        <DetailsTile name={'Country'}>{data?.country}</DetailsTile>
-        <DetailsTile name={'Age'}>{data?.age}</DetailsTile>
-        <DetailsTile name={'Gender'}>{data?.gender}</DetailsTile>
+        <DetailsTile name={t('dashboard-details.phone')}>{data?.phone}</DetailsTile>
+        <DetailsTile name={t('dashboard-details.country')}>{data?.country}</DetailsTile>
+        <DetailsTile name={t('dashboard-details.age')}>{data?.age}</DetailsTile>
+        <DetailsTile name={t('dashboard-details.gender')}>{data?.gender}</DetailsTile>
       </StyledWrapper>
     </ContentWrapper>
   );

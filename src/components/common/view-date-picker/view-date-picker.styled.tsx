@@ -14,7 +14,7 @@ export const DatePickerWrapper = styled.div`
 
   .ant-picker-range {
     border-radius: 4px;
-    width: 100%;
+    width: 90%;
     height: 36px;
   }
 

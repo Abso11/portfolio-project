@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Form, InputNumber, Spin, Select } from 'antd';
 import isEqual from 'lodash.isequal';
 import { timezones } from 'utils/timezones';
@@ -23,6 +24,7 @@ type Props = {
 };
 
 export const UserDetailsModal = ({ id, initialValues }: Props): JSX.Element => {
+  const { t } = useTranslation();
   const [form] = Form.useForm();
   const { isModalVisible, closeModal, openModal, isSaveEnabled, setIsSaveEnabled } = useAntdModal(form);
   const { saveUserDetailss, isSaving } = useSaveUserDetails(id, closeModal);
@@ -41,7 +43,7 @@ export const UserDetailsModal = ({ id, initialValues }: Props): JSX.Element => {
 
   return (
     <>
-      <EditButton onClick={openModal}>{'Edit'}</EditButton>
+      <EditButton onClick={openModal}>{t('edit')}</EditButton>
       <StyledModal
         open={isModalVisible}
         width={912}
@@ -52,20 +54,28 @@ export const UserDetailsModal = ({ id, initialValues }: Props): JSX.Element => {
       >
         <Spin spinning={isSaving}>
           <ModalHeader>
-            <ModalTitle>{'Edit User Details'}</ModalTitle>
+            <ModalTitle>{t('dashboard-details-modal.edit')}</ModalTitle>
             {isSaveEnabled && (
               <ModalButtons>
-                <ModalButton onClick={closeModal}>{'Cancel'}</ModalButton>
-                <ModalButton onClick={form.submit}>{'Save'}</ModalButton>
+                <ModalButton onClick={closeModal}>{t('cancel')}</ModalButton>
+                <ModalButton onClick={form.submit}>{t('save-button')}</ModalButton>
               </ModalButtons>
             )}
           </ModalHeader>
           <Form form={form} initialValues={initialValues} onValuesChange={handleValuesChange} onFinish={handleSubmit}>
             <Wrapper>
-              <FormItem name={FormInputs.TIMEZONE} label={'Timezone'} rules={validationSchema[FormInputs.TIMEZONE]}>
+              <FormItem
+                name={FormInputs.TIMEZONE}
+                label={t('dashboard-details.timezone')}
+                rules={validationSchema[FormInputs.TIMEZONE]}
+              >
                 <Select options={sortedTimezone} />
               </FormItem>
-              <FormItem name={FormInputs.BUDGET} label={'Budget'} rules={validationSchema[FormInputs.BUDGET]}>
+              <FormItem
+                name={FormInputs.BUDGET}
+                label={t('dashboard-details.budget')}
+                rules={validationSchema[FormInputs.BUDGET]}
+              >
                 <InputNumber />
               </FormItem>
             </Wrapper>

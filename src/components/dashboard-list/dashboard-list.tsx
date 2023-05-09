@@ -1,21 +1,21 @@
 import ContentWrapper from 'components/common/content-wrapper';
-import { Pagination, Table } from 'antd';
+import { Pagination, Spin, Table } from 'antd';
 import { OrderDirection } from 'enums';
 import { useListQuery } from 'hooks';
 import { usePaginationHelpers } from 'hooks/use-pagination-helpers';
-import Spinner from 'components/common/spinner';
 import { ReactComponent as ExpandIcon } from 'assets/icons/expand-icon.svg';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useFetchDashboardList } from './dashboard-list.hooks';
 import { PaginationWrapper, TableWrapper, ExpandSwitch } from './dashboard-list.styled';
 import { useColumns } from './dashboard-list.columns';
 import { today, yesterday } from './dashboard-list.constants';
-import { DashboardListHeader, DashboardListEditForm } from './components';
+import { DashboardListHeader, DashboardListEditForm, DashboardListDetails } from './components';
 
 export const DashboardList = (): JSX.Element => {
   const [isSidebarVisible, setIsSidebarVisible] = useState<boolean>(false);
   const [selectedUserId, setSelectedUserId] = useState<string>('');
-
+  const { t } = useTranslation();
   const { listQuery, setListQuery } = useListQuery('timestamp', {
     start_date: yesterday,
     end_date: today
@@ -33,14 +33,14 @@ export const DashboardList = (): JSX.Element => {
     setIsSidebarVisible(false);
   };
 
-  const columns = useColumns(handleOpenSidebar);
+  const columns = useColumns(handleOpenSidebar, t);
 
   const initialValues = data?.logs.filter(({ user_id }) => user_id === selectedUserId);
 
   return (
     <>
+      <DashboardListHeader onRangeChange={handleRangeChange} listQuery={listQuery} setListQuery={setListQuery} />
       <ContentWrapper isError={isError} refetch={refetch} isLoading={false} noData={!isLoading && isError}>
-        <DashboardListHeader onRangeChange={handleRangeChange} listQuery={listQuery} setListQuery={setListQuery} />
         <TableWrapper>
           <Table
             dataSource={data?.logs}
@@ -50,13 +50,13 @@ export const DashboardList = (): JSX.Element => {
             onChange={handleTableChange}
             loading={{
               spinning: isFetching,
-              indicator: <Spinner />
+              indicator: <Spin data-testid='spinner' />
             }}
             rowKey={(row) => row.id}
             pagination={false}
             rowClassName={(_, index) => (index % 2 ? 'even' : 'odd')}
             expandable={{
-              expandedRowRender: () => <></>,
+              expandedRowRender: ({ details }) => <DashboardListDetails details={details} />,
               expandIcon: ({ expanded, onExpand, record }) => (
                 <ExpandSwitch isExpanded={expanded} onClick={(e) => onExpand(record, e)}>
                   <ExpandIcon />
@@ -73,7 +73,7 @@ export const DashboardList = (): JSX.Element => {
               pageSize={listQuery.pagination.pageSize}
               showSizeChanger={true}
               pageSizeOptions={listQuery.pagination.pageSizeOptions}
-              locale={{ items_per_page: 'per page' }}
+              locale={{ items_per_page: t<string>('dashboard-list.per-page') }}
               onChange={handlePaginationChange}
             />
           </PaginationWrapper>
