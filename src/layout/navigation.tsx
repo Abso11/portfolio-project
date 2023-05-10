@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Menu } from 'components/responsive-menu';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { Menu } from 'components/responsive-menu';
 import { appRoutes } from 'urls';
 import { mockedDashboardList } from 'mocks/responses';
-import { useTranslation } from 'react-i18next';
 
 const { MenuItem } = Menu;
 

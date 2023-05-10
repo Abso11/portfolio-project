@@ -1,18 +1,18 @@
-import { act, fireEvent, render, screen, waitFor, waitForElementToBeRemoved, within } from 'tests';
+import { format } from 'date-fns';
 import userEvent from '@testing-library/user-event';
 import { uniqBy } from 'lodash';
 import jest from 'jest-mock';
 import { rest } from 'msw';
 import { server } from 'mocks';
+import { act, fireEvent, render, screen, waitFor, waitForElementToBeRemoved, within } from 'tests';
 import apiPaths from 'utils/api-paths';
 import { mockedDashboardList } from 'mocks/responses';
-import { format } from 'date-fns';
 import { DashboardList, DashboardListRes } from '.';
 
 const columnTitles = ['Timestamp', 'Action', 'User id', 'User Name', 'Status', 'Error code'];
 
 const {
-  DASHBOARD: { TEST }
+  DASHBOARD: { LIST }
 } = apiPaths;
 
 describe('Dashboard List', () => {
@@ -34,8 +34,8 @@ describe('Dashboard List', () => {
       });
     });
 
-    it('should not render correctlyy', async () => {
-      server.use(rest.get(`*${TEST}`, (_req, res, ctx) => res(ctx.status(400))));
+    it('should not render correctly', async () => {
+      server.use(rest.get(`*${LIST}`, (_req, res, ctx) => res(ctx.status(400))));
       render(<DashboardList />);
 
       const refreshMessage = await screen.findByText('Try to refresh');
@@ -60,7 +60,7 @@ describe('Dashboard List', () => {
           mockParams(req.url.search);
         });
 
-        await waitFor(() => expect(mockUrl).toHaveBeenCalledWith(expect.stringContaining('test')));
+        await waitFor(() => expect(mockUrl).toHaveBeenCalledWith(expect.stringContaining(apiPaths.DASHBOARD.LIST)));
         expect(mockParams).toHaveBeenCalledWith(expect.stringContaining('skip=10'));
         expect(await screen.findByText(logFromSecondPage?.user_id as string)).toBeInTheDocument();
       });
@@ -89,7 +89,7 @@ describe('Dashboard List', () => {
         await waitFor(() => fireEvent.click(sizeChanger2));
       });
 
-      await waitFor(() => expect(mockUrl).toHaveBeenCalledWith(expect.stringContaining('test')));
+      await waitFor(() => expect(mockUrl).toHaveBeenCalledWith(expect.stringContaining(apiPaths.DASHBOARD.LIST)));
       expect(mockParams).toHaveBeenCalledWith(expect.stringContaining('take=20'));
 
       expect(await screen.findByText('user12')).toBeInTheDocument();
@@ -125,7 +125,7 @@ describe('Dashboard List', () => {
         mockParams(req.url.search);
       });
 
-      await waitFor(() => expect(mockUrl).toHaveBeenCalledWith(expect.stringContaining(apiPaths.DASHBOARD.TEST)));
+      await waitFor(() => expect(mockUrl).toHaveBeenCalledWith(expect.stringContaining(apiPaths.DASHBOARD.LIST)));
       expect(mockParams).toHaveBeenCalledWith(expect.stringContaining(`start_date=${twoDaysAgoDate}`));
     });
   });
@@ -233,9 +233,7 @@ describe('Dashboard List', () => {
       const suggestedSearchedActionNames = await screen.findAllByTestId('dashboard-list-hints');
       await userEvent.click(suggestedSearchedActionNames[0] as Element);
 
-      await waitFor(() =>
-        expect(mockUrl).toHaveBeenCalledWith(expect.stringContaining(apiPaths.DASHBOARD.DASHBOARD_LIST_HINTS))
-      );
+      await waitFor(() => expect(mockUrl).toHaveBeenCalledWith(expect.stringContaining(apiPaths.DASHBOARD.LIST)));
       expect(mockParams).toHaveBeenCalledWith(
         expect.stringContaining(`filter[action]=${mockedDashboardList[0]?.action}`)
       );

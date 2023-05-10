@@ -10,6 +10,8 @@
   "data-error": "Can't show data",
   "refresh": "Refresh",
   "try-to-refresh": "Try to refresh",
+  "page-not-found": "Page not found",
+  "helpful-links": "Helpful links",
   "dashboard-list": {
     "timestamp": "Timestamp",
     "action": "Action",
@@ -46,5 +48,12 @@
   "menu": {
     "dashboard-list": "Dashboard List",
     "user-details": "User Details"
+  },
+  "forms": {
+    "is-required": "Is required",
+    "must-be-a-number-greater-than": "Must be a number greater than {{value}}",
+    "is-not-in-correct-format": "May contain only alphanumeric and special characters: {{specialCharacters}}",
+    "must-be-a-integer": "Please use integer numbers only",
+    "must-be-unique": "Must be unique"
   }
 }

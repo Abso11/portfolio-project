@@ -1,16 +1,15 @@
-import ContentWrapper from 'components/common/content-wrapper';
-import { Pagination, Spin, Table } from 'antd';
-import { OrderDirection } from 'enums';
-import { useListQuery } from 'hooks';
-import { usePaginationHelpers } from 'hooks/use-pagination-helpers';
-import { ReactComponent as ExpandIcon } from 'assets/icons/expand-icon.svg';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Pagination, Spin, Table } from 'antd';
+import { OrderDirection } from 'enums';
+import { useListQuery, usePaginationHelpers } from 'hooks';
+import ContentWrapper from 'components/common/content-wrapper/content-wrapper';
+import { ReactComponent as ExpandIcon } from 'assets/icons/expand-icon.svg';
+import { DashboardListHeader, DashboardListEditForm, DashboardListDetails } from './components';
 import { useFetchDashboardList } from './dashboard-list.hooks';
 import { PaginationWrapper, TableWrapper, ExpandSwitch } from './dashboard-list.styled';
 import { useColumns } from './dashboard-list.columns';
 import { today, yesterday } from './dashboard-list.constants';
-import { DashboardListHeader, DashboardListEditForm, DashboardListDetails } from './components';
 
 export const DashboardList = (): JSX.Element => {
   const [isSidebarVisible, setIsSidebarVisible] = useState<boolean>(false);

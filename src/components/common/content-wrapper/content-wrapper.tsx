@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
-import { ErrorOverlay } from './error-overlay';
-import Spinner from './spinner';
+import { ErrorOverlay } from '../error-overlay';
+import Spinner from '../spinner/spinner';
 
 type Props = {
   isError: boolean;

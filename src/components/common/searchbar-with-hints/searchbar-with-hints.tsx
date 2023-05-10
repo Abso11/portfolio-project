@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from 'react';
-import { ReactComponent as RemoveIcon } from 'assets/icons/cancel.svg';
 import { useTranslation } from 'react-i18next';
+import { ReactComponent as RemoveIcon } from 'assets/icons/cancel.svg';
 import {
   Hint,
   HintsWrapper,

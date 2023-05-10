@@ -1,4 +1,6 @@
 import { rest } from 'msw';
+import orderBy from 'lodash.orderby';
+import { sortBy, uniqBy } from 'lodash';
 import apiPaths from 'utils/api-paths';
 import { mockedDashboardList } from 'mocks/responses/dashboard.fixtures';
 import {
@@ -6,15 +8,13 @@ import {
   DashboardListRes,
   UpdateDashboardListReq
 } from 'components/dashboard-list/dashboard-list.types';
-import orderBy from 'lodash.orderby';
-import { sortBy, uniqBy } from 'lodash';
 
 const {
-  DASHBOARD: { TEST, DASHBOARD_LIST_HINTS }
+  DASHBOARD: { LIST, LIST_HINTS }
 } = apiPaths;
 
 export const dashboardHandler = [
-  rest.get(`*${TEST}`, (req, res, ctx) => {
+  rest.get(`*${LIST}`, (req, res, ctx) => {
     const skip = req.url.searchParams.get('skip');
     const take = req.url.searchParams.get('take');
     const sortOrder = req.url.searchParams.get('sort_order');
@@ -65,7 +65,7 @@ export const dashboardHandler = [
     return res(ctx.delay(300), ctx.status(200), ctx.json(response));
   }),
 
-  rest.patch(`*${TEST}`, (req, res, ctx) => {
+  rest.patch(`*${LIST}`, (req, res, ctx) => {
     // eslint-disable-next-line @typescript-eslint/naming-convention
     const { user_id } = req.body as UpdateDashboardListReq;
     const existingUserIndex = mockedDashboardList.findIndex((item) => item.user_id === user_id);
@@ -90,7 +90,7 @@ export const dashboardHandler = [
     return res(ctx.status(200), ctx.json(updatedUser));
   }),
 
-  rest.get(`*${DASHBOARD_LIST_HINTS}`, (req, res, ctx) => {
+  rest.get(`*${LIST_HINTS}`, (req, res, ctx) => {
     const searchText = req.url.searchParams.get('search_text')!.toLowerCase();
 
     let response: DashBoardListHintsRes = [];

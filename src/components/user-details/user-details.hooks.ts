@@ -2,6 +2,7 @@ import { UseQueryResult } from '@tanstack/react-query';
 import { generatePath } from 'react-router';
 import useQueryWithError from 'hooks/use-query-with-error';
 import { apiPaths, getData } from 'utils';
+import { QueryKeysUserDetails } from 'enums';
 import { UserDetailsReq, UserDetailsRes } from './user-details.types';
 
 const fetchUserDetails = async (id: UserDetailsReq): Promise<UserDetailsRes> => {
@@ -14,6 +15,6 @@ const fetchUserDetails = async (id: UserDetailsReq): Promise<UserDetailsRes> => 
 };
 
 export const useFetchUserDetails = (id: string): UseQueryResult<UserDetailsRes, Error> =>
-  useQueryWithError<UserDetailsRes, Error>(['userDetails', id], () => fetchUserDetails({ id }), {
+  useQueryWithError<UserDetailsRes, Error>([QueryKeysUserDetails.UserDetails, id], () => fetchUserDetails({ id }), {
     refetchOnWindowFocus: false
   });

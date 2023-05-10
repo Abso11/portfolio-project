@@ -1,5 +1,5 @@
-import { DashboardListRes } from 'components/dashboard-list/dashboard-list.types';
 import { orderBy } from 'lodash';
+import { DashboardListRes } from 'components/dashboard-list/dashboard-list.types';
 
 const today = new Date();
 const todayMidnight = new Date();
