@@ -189,5 +189,3 @@ export const mockedDashboardList: DashboardListRes['logs'] = [
     }
   }
 ];
-
-export const sortedByDefaultOcppLogs = orderBy(mockedDashboardList, 'timestamp', 'asc');
