@@ -12,7 +12,7 @@ export const mustBeGreaterOrEqualTo = (to: number, required?: boolean): RuleObje
       return Promise.reject(new Error(i18n.t<string>('forms.is-required')));
     }
     if (Number(value) < Number(to)) {
-      return Promise.reject(new Error(`Must be greater or equal to: ${to}`));
+      return Promise.reject(new Error(i18n.t<string>('forms.must-be-a-number-greater-than', { value: to })));
     }
     return Promise.resolve();
   }

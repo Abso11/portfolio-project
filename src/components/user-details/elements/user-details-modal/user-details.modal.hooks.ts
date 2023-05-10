@@ -1,10 +1,11 @@
-import { generatePath } from 'react-router';
 import { UseMutateAsyncFunction } from '@tanstack/react-query';
+import { generatePath } from 'react-router';
+import { t } from 'i18next';
 import useMutationWithError from 'hooks/use-mutation-with-error';
 import apiPaths from 'utils/api-paths';
 import { patchData } from 'utils/api-helpers';
 import { UpdateUserDetailsReq } from 'components/user-details/user-details.types';
-import { t } from 'i18next';
+import { QueryKeysUserDetails } from 'enums';
 
 const saveUserDetails = async (id: string, payload: UpdateUserDetailsReq): Promise<void> => {
   const {
@@ -26,7 +27,7 @@ export const useSaveUserDetails = (siteId: string, onError: () => void): UseSave
     {
       errorMessage: t<string>('save-error'),
       successMessage: t<string>('save-success'),
-      invalidateQueryKey: 'userDetails',
+      invalidateQueryKey: QueryKeysUserDetails.UserDetails,
       onError
     }
   );

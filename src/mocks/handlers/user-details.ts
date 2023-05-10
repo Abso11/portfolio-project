@@ -1,6 +1,6 @@
-import apiPaths from 'utils/api-paths';
 import { rest } from 'msw';
 import { generatePath } from 'react-router';
+import apiPaths from 'utils/api-paths';
 import { UpdateUserDetailsReq } from 'components/user-details/user-details.types';
 import { userDetailsData } from 'mocks/responses/user-details.fixtures';
 
@@ -26,6 +26,7 @@ export const userDetailsHandler = [
 
     return res(ctx.delay(500), ctx.status(200), ctx.json(response));
   }),
+
   rest.patch(generatePath(USER_DETAILS, { id: ':id' }), (req, res, ctx) => {
     const { id } = req.params;
     const existingUserIndex = userDetailsData.findIndex((item) => item.id === id);

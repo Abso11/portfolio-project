@@ -1,8 +1,7 @@
 import { useParams } from 'react-router';
 import { BrowserRouter, Routes as ReactRoutes, Route, Navigate } from 'react-router-dom';
 import MainLayout from 'components/main-layout';
-import { Dashboard } from 'views';
-import { UserData } from 'views/user-data';
+import { Dashboard, Page404, UserData } from 'views';
 import { appRoutes } from 'urls';
 
 type PagePathTypes = {
@@ -26,6 +25,7 @@ const Routes = (): JSX.Element => (
           element={<RedirectToDetailsPage pagePath={appRoutes.app.dashboardDetails} />}
         />
       </Route>
+      <Route path='*' element={<Page404 />} />
     </ReactRoutes>
   </BrowserRouter>
 );

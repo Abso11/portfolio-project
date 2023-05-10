@@ -10,6 +10,8 @@
   "data-error": "Nie pobrano danych",
   "refresh": "Odśwież",
   "try-to-refresh": "Przeładuj dane",
+  "page-not-found": "Strony nie znaleziono",
+  "helpful-links": "Linki pomocniczne",
   "dashboard-list": {
     "timestamp": "Czas",
     "action": "Akcja",
@@ -36,7 +38,7 @@
     "gender": "Płeć"
   },
   "dashboard-list-edit-form": {
-    "edit-user": "Edytowanie użytkownika: ",
+    "edit-user": "Edytowanie użytkownika",
     "user-name": "Nazwa użytkownika",
     "action": "Akcja"
   },
@@ -46,5 +48,12 @@
   "menu": {
     "dashboard-list": "Lista główna",
     "user-details": "Sczegóły użytkownika"
+  },
+  "forms": {
+    "is-required": "Jest wymagane",
+    "must-be-a-number-greater-than": "Liczba musi być większa od {{value}}",
+    "is-not-in-correct-format": "Może zawierać tylko znaki alfanumeryczne i specjalne: {{specialCharacters}}",
+    "must-be-a-integer": "Proszę używać tylko liczb całkowitych",
+    "must-be-unique": "Musi być unikalny"
   }
 }

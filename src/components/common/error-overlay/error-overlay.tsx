@@ -1,5 +1,5 @@
-import { ReactComponent as RefreshIcon } from 'assets/icons/refresh.svg';
 import { useTranslation } from 'react-i18next';
+import { ReactComponent as RefreshIcon } from 'assets/icons/refresh.svg';
 import { Wrapper, Refresh, AutomaticRefreshInfo } from './error-overlay.styled';
 
 type Props = {

@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { DetailsWrapper } from './dashboard-list-details.tsx.styled';
+import { DetailsWrapper } from './dashboard-list-details.styled';
 import { DashboardListDetailsProps } from './dashboard-list-details.types';
 
 export const DashboardListDetails = ({ details }: DashboardListDetailsProps): JSX.Element => {

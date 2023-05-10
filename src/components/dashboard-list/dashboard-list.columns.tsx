@@ -1,10 +1,10 @@
 import { ColumnsType } from 'antd/es/table';
 import { format } from 'date-fns';
-import { AntdColumnTitle } from 'components/common/antd-column-title';
+import { TFunction } from 'i18next';
+import { AntdColumnTitle } from 'components/common';
 import { OrderDirection } from 'enums';
 import { appRoutes } from 'urls';
 import { ReactComponent as EditIcon } from 'assets/icons/edit.svg';
-import { TFunction } from 'i18next';
 import { DashboardListRes } from './dashboard-list.types';
 import { StyledEditButton, StyledLink } from './dashboard-list.styled';
 

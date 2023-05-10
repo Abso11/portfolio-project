@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
-import { LanguageSwitcher } from 'components/common/language-switcher/language-switcher';
-import { ToggleButton } from './elements/toggle-button/toggle-button';
-import { MenuItem } from './elements/menu-item/menu-item';
+import { LanguageSwitcher } from 'components/common';
+import { ToggleButton, MenuItem } from './elements';
 import { MenuHeader, Nav, Title, Wrapper, MenuFooter } from './responsive-menu.styled';
 
 export type MenuProps = {

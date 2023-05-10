@@ -4,7 +4,7 @@ import isEqual from 'lodash.isequal';
 import { timezones } from 'utils/timezones';
 import { useAntdModal } from 'hooks';
 import { UpdateUserDetailsReq } from 'components/user-details/user-details.types';
-import { FormItem } from 'components/common/antd-form-item';
+import { FormItem } from 'components/common';
 import {
   CloseButton,
   EditButton,

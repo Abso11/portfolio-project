@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
-import find from 'lodash.find';
-import ContentWrapper from 'components/common/content-wrapper';
-import { timezones } from 'utils/timezones';
 import { useTranslation } from 'react-i18next';
+import find from 'lodash.find';
+import ContentWrapper from 'components/common/content-wrapper/content-wrapper';
+import { timezones } from 'utils/timezones';
 import { useFetchUserDetails } from './user-details.hooks';
 import { SectionTitles, DetailsTile, StyledWrapper, UserDetailsModal } from './elements';
 

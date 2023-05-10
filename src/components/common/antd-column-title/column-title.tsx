@@ -1,9 +1,9 @@
-import { ReactComponent as SortIconDown } from 'assets/icons/sorting-arrow-down.svg';
-import { ReactComponent as SortIconUp } from 'assets/icons/sorting-arrow-up.svg';
 import { ColumnType } from 'antd/lib/table';
 import { SortOrder } from 'antd/lib/table/interface';
-import { OrderDirection } from 'enums/order-direction';
 import isEmpty from 'lodash.isempty';
+import { OrderDirection } from 'enums/order-direction';
+import { ReactComponent as SortIconDown } from 'assets/icons/sorting-arrow-down.svg';
+import { ReactComponent as SortIconUp } from 'assets/icons/sorting-arrow-up.svg';
 import { FlexContainer, SortIconWrapper } from './column-title.styled';
 
 interface Props {

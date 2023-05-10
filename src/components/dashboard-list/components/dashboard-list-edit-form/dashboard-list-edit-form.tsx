@@ -1,13 +1,11 @@
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Form, Input, Spin } from 'antd';
 import isEqual from 'lodash.isequal';
-
 import { useAntdModal } from 'hooks';
-import { FormItem } from 'components/common/antd-form-item';
-import { AntdSidebar } from 'components/common/sidebar';
+import { FormItem, AntdSidebar } from 'components/common';
 import { UpdateDashboardListReq } from 'components/dashboard-list/dashboard-list.types';
-import { useEffect } from 'react';
-import { useSaveUserDashboardData } from 'components/dashboard-list/dashboard-list.hooks';
-import { useTranslation } from 'react-i18next';
+import { useSaveUserDashboardData } from './dashboard-list-edit-form.hooks';
 import { FormInputs, validationSchema } from './utils';
 import { StyledEditUser } from './dashboard-list-edit-form.styled';
 

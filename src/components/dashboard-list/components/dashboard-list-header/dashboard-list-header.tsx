@@ -1,11 +1,10 @@
 import { useState, Dispatch, SetStateAction } from 'react';
-import { SearchBarWithHints } from 'components/common/searchbar-with-hints';
+import { useTranslation } from 'react-i18next';
+import { SearchBarWithHints, ViewDatePicker } from 'components/common';
+import { yearAgo } from 'components/dashboard-list/dashboard-list.constants';
 import { useDebounce } from 'hooks';
 import { ListQuery } from 'types';
-import { ViewDatePicker } from 'components/common/view-date-picker';
-import { useDashboardListHints } from 'components/dashboard-list/dashboard-list.hooks';
-import { yearAgo } from 'components/dashboard-list/dashboard-list.constants';
-import { useTranslation } from 'react-i18next';
+import { useDashboardListHints } from './dashboard-list-header.hooks';
 import { FilterWrapper } from './dashboard-list-header.styled';
 
 type Props = {
