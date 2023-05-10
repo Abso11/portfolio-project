@@ -1,4 +1,3 @@
-import { orderBy } from 'lodash';
 import { DashboardListRes } from 'components/dashboard-list/dashboard-list.types';
 
 const today = new Date();
