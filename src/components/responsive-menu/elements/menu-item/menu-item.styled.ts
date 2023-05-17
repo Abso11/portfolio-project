@@ -57,7 +57,7 @@ export const Link = styled.a<{
   padding: ${({ theme }) => theme.spacing.space_12} 28px;
   font-size: ${({ theme }) => theme.fontSize.nd};
   line-height: ${({ theme }) => theme.spacing.space_24};
-  background-color: ${({ isActive }) => (isActive ? '#2D8EFF' : 'inherit')};
+  background-color: ${({ isActive, theme }) => (isActive ? theme.colors.primary.blue : 'inherit')};
   color: ${({ isActive, $isExpanded, isActiveAndExpanded, theme }) =>
     // eslint-disable-next-line no-nested-ternary
     isActive
