@@ -1,6 +1,6 @@
 import { useParams } from 'react-router';
 import { BrowserRouter, Routes as ReactRoutes, Route, Navigate } from 'react-router-dom';
-import MainLayout from 'components/main-layout';
+import { MainLayout } from 'layout';
 import { Dashboard, Page404, UserData } from 'views';
 import { appRoutes } from 'urls';
 

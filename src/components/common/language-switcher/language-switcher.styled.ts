@@ -10,6 +10,6 @@ export const StyledButton = styled.button<{ isActive: boolean }>`
   border: none;
   border-radius: 10px;
   transition: 0.2s ease-in-out;
-  background: ${({ isActive, theme }) => (isActive ? '#2D8EFF' : theme.colors.primary.deep_blue)};
+  background: ${({ isActive, theme }) => (isActive ? theme.colors.primary.blue : theme.colors.primary.deep_blue)};
   color: ${({ isActive, theme }) => (isActive ? theme.colors.primary.black : theme.colors.primary.white)};
 `;

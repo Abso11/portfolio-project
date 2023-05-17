@@ -10,7 +10,8 @@ export const theme = {
       ghost_white: '#CACACA',
       black: '#000000',
       purple: '#1A1233',
-      green: '#003D2E'
+      green: '#003D2E',
+      blue: '#2D8EFF'
     },
     secondary: {
       ultramarine_blue_90: '#237BFF',

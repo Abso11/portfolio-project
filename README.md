@@ -5,10 +5,10 @@ Repository contains UI application called Portfolio Project. Please see instruct
 Project description:
 - the app allows to see example user data within the table including pagination, sorting and searching
 - the app working with mock service worker
+- edit user data within table form or separate page with user details
 - responsive menu included
 - custom hooks
-- edit user data within table form or separate page with user details
-- validation included
+- form validation included
 - i18next included
 - unit test included
 - error/loading handlers

@@ -14,6 +14,6 @@ export type UserDetailsRes = {
 };
 
 export type UpdateUserDetailsReq = {
-  timezone?: string;
+  timezone: string;
   budget: number;
 };
