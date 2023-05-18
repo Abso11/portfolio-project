@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import { BrowserRouter } from 'react-router-dom';
 import { theme } from 'styles';
 import 'jest-styled-components';
+import 'utils/i18n';
 
 const queryClient = new QueryClient({
   defaultOptions: {

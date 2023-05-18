@@ -4,7 +4,7 @@ import { StyledButton, StyledWrapper } from './language-switcher.styled';
 
 export const LanguageSwitcher = (): JSX.Element => {
   const { i18n } = useTranslation();
-  const [selectedLanguage, setSelectedLanguage] = useState<string>(i18n.language);
+  const [selectedLanguage, setSelectedLanguage] = useState<string>(i18n.language || 'en');
 
   const changeLanguage = (language: string): void => {
     i18n.changeLanguage(language);
