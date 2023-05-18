@@ -21,9 +21,7 @@ export const dashboardHandler = [
     const sortField = req.url.searchParams.get('sort_field');
     const startDate = req.url.searchParams.get('start_date');
     const endDate = req.url.searchParams.get('end_date');
-    const filterId = req.url.searchParams.get('filter[user_id]');
-    const filterStatus = req.url.searchParams.get('filter[status]');
-    const filterAction = req.url.searchParams.get('filter[action]');
+    const filter = req.url.searchParams.get('filter');
 
     if (!take) {
       return res(ctx.status(400), ctx.json({ errorMessage: 'Take is required' }));
@@ -45,16 +43,25 @@ export const dashboardHandler = [
       );
     }
 
-    if (filterId) {
-      dashboardList = dashboardList.filter((item) => item.user_id.toLowerCase() === filterId.toLowerCase());
-    }
+    if (filter) {
+      const parsedFilter = JSON.parse(filter || '');
+      if (parsedFilter.user_id) {
+        dashboardList = dashboardList.filter(
+          (item) => item.user_id.toLowerCase() === parsedFilter.user_id.toLowerCase()
+        );
+      }
 
-    if (filterStatus) {
-      dashboardList = dashboardList.filter((item) => item.status?.toLowerCase() === filterStatus.toLowerCase());
-    }
+      if (parsedFilter.status) {
+        dashboardList = dashboardList.filter(
+          (item) => item.status?.toLowerCase() === parsedFilter.status.toLowerCase()
+        );
+      }
 
-    if (filterAction) {
-      dashboardList = dashboardList.filter((item) => item.action?.toLowerCase() === filterAction.toLowerCase());
+      if (parsedFilter.action) {
+        dashboardList = dashboardList.filter(
+          (item) => item.action?.toLowerCase() === parsedFilter.action.toLowerCase()
+        );
+      }
     }
 
     const response: DashboardListRes = {

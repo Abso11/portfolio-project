@@ -32,9 +32,7 @@ type IProviders = {
 const Providers = ({ children }: IProviders) => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <>{children}</>
-      </BrowserRouter>
+      <BrowserRouter>{children}</BrowserRouter>
     </ThemeProvider>
   </QueryClientProvider>
 );
