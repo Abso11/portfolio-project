@@ -22,7 +22,7 @@ i18n
     keySeparator: '.',
     debug: process.env.NODE_ENV === 'development',
     interpolation: { escapeValue: false },
-    react: { useSuspense: false, bindI18n: 'loaded languageChanged', bindI18nStore: 'added' }
+    react: { useSuspense: false }
   });
 
 export default i18n;
