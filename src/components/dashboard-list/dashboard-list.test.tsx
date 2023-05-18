@@ -1,7 +1,6 @@
 import { format } from 'date-fns';
 import userEvent from '@testing-library/user-event';
 import { uniqBy } from 'lodash';
-import jest from 'jest-mock';
 import { rest } from 'msw';
 import { server } from 'mocks';
 import { act, fireEvent, render, screen, waitFor, waitForElementToBeRemoved, within } from 'tests';
@@ -23,6 +22,12 @@ describe('Dashboard List', () => {
 
       const table = screen.getByRole('table');
       expect(table).toBeInTheDocument();
+
+      const startDatePicker = screen.getByPlaceholderText('Start date');
+      expect(startDatePicker).toBeInTheDocument();
+
+      const endDatePicker = screen.getByPlaceholderText('End date');
+      expect(endDatePicker).toBeInTheDocument();
     });
 
     it('should render all table columns', async () => {
@@ -235,7 +240,7 @@ describe('Dashboard List', () => {
 
       await waitFor(() => expect(mockUrl).toHaveBeenCalledWith(expect.stringContaining(apiPaths.DASHBOARD.LIST)));
       expect(mockParams).toHaveBeenCalledWith(
-        expect.stringContaining(`filter[action]=${mockedDashboardList[0]?.action}`)
+        expect.stringContaining(`filter=%7B%22action%22:%22${mockedDashboardList[0]?.action}%22%7D`)
       );
       expect(mockParams).toHaveBeenCalledWith(expect.stringContaining(`search_text=${mockedDashboardList[0]?.action}`));
 
