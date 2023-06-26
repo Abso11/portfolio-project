@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import { TablePaginationConfig } from 'antd';
 import { FilterValue } from 'antd/lib/table/interface';

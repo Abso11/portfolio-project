@@ -1,5 +1,4 @@
-import { UseQueryResult } from '@tanstack/react-query';
-import useQueryWithError from 'hooks/use-query-with-error';
+import { UseQueryResult, useQuery } from '@tanstack/react-query';
 import { usePaginationConfig } from 'hooks';
 import { getData } from 'utils/api-helpers';
 import apiPaths from 'utils/api-paths';
@@ -23,7 +22,7 @@ const fetchDashboardList = async (request: DashboardListReq): Promise<DashboardL
 
 export const useFetchDashboardList = (listQuery: ListQuery): UseQueryResult<DashboardListRes, Error> => {
   const { skip, take, sortField, sortOrder, startDate, endDate, filter } = usePaginationConfig(listQuery);
-  return useQueryWithError(
+  return useQuery(
     [QueryKeysDashboard.DashboardList, skip, take, sortOrder, sortField, startDate, endDate, filter],
     () =>
       fetchDashboardList({
