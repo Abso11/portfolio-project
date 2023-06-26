@@ -1,6 +1,6 @@
-import { UseQueryResult } from '@tanstack/react-query';
+import { UseQueryResult, useQuery } from '@tanstack/react-query';
 import { DashBoardListHintsRes, DashboardListHintsReq } from 'components/dashboard-list/dashboard-list.types';
-import { usePaginationConfig, useQueryWithError } from 'hooks';
+import { usePaginationConfig } from 'hooks';
 import { ListQuery } from 'types';
 import { apiPaths, getData } from 'utils';
 import { QueryKeysDashboard } from 'enums';
@@ -19,7 +19,7 @@ export const useDashboardListHints = (
   searchText: string
 ): UseQueryResult<DashBoardListHintsRes> => {
   const { startDate, endDate } = usePaginationConfig(listQuery);
-  return useQueryWithError(
+  return useQuery(
     [QueryKeysDashboard.DashboardListHints, startDate, endDate, searchText],
     () =>
       fetchDashboardListHints({

@@ -7,7 +7,6 @@ type UsePaginationConfig = {
   take: number;
   sortField: string;
   sortOrder: OrderDirection;
-  sites_ids?: string[];
   startDate?: Date;
   endDate?: Date;
   filter?: {

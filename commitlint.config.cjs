@@ -8,11 +8,6 @@ module.exports = {
       'always',
       ['build', 'docs', 'chore', 'feat', 'fix', 'release', 'refactor', 'revert', 'test', 'deps']
     ],
-    'function-rules/scope-enum': [
-      2,
-      'always',
-      ({ scope }) => (/^((NO-TICKET)|([A-Z]+-[0-9]+))/.test(scope) ? [true] : [false, 'wrong scope'])
-    ],
     'type-empty': [2, 'never'],
     'subject-empty': [2, 'never'],
     'subject-min-length': [2, 'always', 5],
