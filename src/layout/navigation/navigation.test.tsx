@@ -16,7 +16,7 @@ describe('Navigation', () => {
     });
     userEvent.click(link as Element);
 
-    expect(window.location.pathname).toBe(appRoutes.app.movieDetails);
+    expect(window.location.pathname).toBe(appRoutes.app.movies);
   });
 
   it(`Movie details menu item should redirect to ${appRoutes.app.movieDetails}`, async () => {
