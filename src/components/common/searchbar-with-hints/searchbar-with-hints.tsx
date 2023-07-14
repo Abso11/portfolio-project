@@ -67,7 +67,7 @@ export const SearchBarWithHints = ({
       <HintsWrapper isVisible={isVisible}>
         {withTags && searchText && (
           <SearchedHints>
-            {t('dashboard-list.searching-for')} “{searchText}”
+            {t('movie-list.searching-for')} “{searchText}”
           </SearchedHints>
         )}
         {isFetching && <Hint>{t('loading-data')}</Hint>}
@@ -77,7 +77,7 @@ export const SearchBarWithHints = ({
             <Hint onClick={handleOnClick(field, text)} key={text} data-testid={'movie-list-hints'}>
               <span>{text}</span>
               <SpanField withTags={withTags}>
-                {withTags && <span>{t('dashboard-list.under')} </span>}
+                {withTags && <span>{t('movie-list.under')} </span>}
                 {withTags && field}
               </SpanField>
             </Hint>

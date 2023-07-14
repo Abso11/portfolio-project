@@ -12,7 +12,7 @@
   "try-to-refresh": "Try to refresh",
   "page-not-found": "Page not found",
   "helpful-links": "Helpful links",
-  "dashboard-list": {
+  "movie-list": {
     "released": "Released",
     "title": "Title",
     "title_id": "Title ID",
@@ -26,30 +26,30 @@
     "searching-for": "Searching for: ",
     "under": "under",
     "per-page": "per page",
-    "header": "Search movies by Title | ID | Creators | Status..."
+    "header": "Search by Title | ID | Creators | Status..."
   },
-  "dashboard-details": {
-    "name": "Name",
+  "movie-details": {
+    "title": "Title",
     "timezone": "Timezone",
-    "user-id": "User id",
+    "id": "Title ID",
     "budget": "Budget",
     "additional-information": "Additional Information",
-    "phone": "Phone",
-    "country": "Country",
-    "age": "Age",
-    "gender": "Gender"
+    "votes": "Votes",
+    "language": "Language",
+    "rating": "Rating",
+    "type": "Type"
   },
-  "dashboard-list-edit-form": {
-    "edit-user": "Editing Title ID",
-    "user-name": "Creator Name",
-    "action": "Title"
+  "movie-list-edit-form": {
+    "edit-title-id": "Editing Title ID",
+    "creator-name": "Creator Name",
+    "title": "Title"
   },
-  "dashboard-details-modal": {
-   "edit": "Edit user details"
+  "movie-details-modal": {
+   "edit": "Edit movie details"
   },
   "menu": {
-    "dashboard-list": "Movie List",
-    "user-details": "Movie Details"
+    "movie-list": "Movie List",
+    "movie-details": "Movie Details"
   },
   "forms": {
     "is-required": "Is required",

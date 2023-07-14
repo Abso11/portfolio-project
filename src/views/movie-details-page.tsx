@@ -1,3 +1,3 @@
-import UserDetails from 'components/user-details/user-details';
+import { MovieDetails } from 'components/movie-details';
 
-export const MovieDetailsPage = (): JSX.Element => <UserDetails />;
+export const MovieDetailsPage = (): JSX.Element => <MovieDetails />;

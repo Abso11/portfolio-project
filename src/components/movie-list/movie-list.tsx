@@ -9,7 +9,7 @@ import { MovieListHeader, MovieListEditForm, MovieListDetails } from './componen
 import { useFetchMovieList } from './movie-list.hooks';
 import { PaginationWrapper, TableWrapper, ExpandSwitch } from './movie-list.styled';
 import { useColumns } from './movie-list.columns';
-import { today, yesterday } from './movie-list.constants';
+import { today, startDate } from './movie-list.constants';
 
 export const MovieList = (): JSX.Element => {
   const [isSidebarVisible, setIsSidebarVisible] = useState<boolean>(false);
@@ -18,7 +18,7 @@ export const MovieList = (): JSX.Element => {
   const { t } = useTranslation();
 
   const { listQuery, setListQuery } = useListQuery('user_id', {
-    start_date: new Date('July 10, 2000 03:24:00'),
+    start_date: startDate,
     end_date: today
   });
   const { data, isError, isLoading, refetch, isFetching } = useFetchMovieList(listQuery);
@@ -76,7 +76,7 @@ export const MovieList = (): JSX.Element => {
               pageSize={listQuery.pagination.pageSize}
               showSizeChanger={true}
               pageSizeOptions={listQuery.pagination.pageSizeOptions}
-              locale={{ items_per_page: t<string>('dashboard-list.per-page') }}
+              locale={{ items_per_page: t<string>('movie-list.per-page') }}
               onChange={handlePaginationChange}
             />
           </PaginationWrapper>

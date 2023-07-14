@@ -27,7 +27,6 @@ export const usePaginationHelpers = (
     }));
   };
 
-  // searchOnEnter
   const handleOnSearch = (): void => {
     setListQuery?.((prev) => ({
       ...prev,

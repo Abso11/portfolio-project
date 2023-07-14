@@ -75,7 +75,7 @@ export const MenuFooter = styled.div`
   margin-top: auto;
   padding: ${({ theme }) => theme.spacing.space_16};
   text-align: center;
-  margin-bottom: 70px;
+  z-index: 7;
 
   ${mediaQuery.desktop} {
     padding: ${({ theme }) => theme.spacing.space_32};

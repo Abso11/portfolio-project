@@ -3,7 +3,7 @@ import { Form, InputNumber, Spin, Select } from 'antd';
 import isEqual from 'lodash.isequal';
 import { timezones } from 'utils/timezones';
 import { useAntdModal } from 'hooks';
-import { UpdateUserDetailsReq } from 'components/user-details/user-details.types';
+import { UpdateMovieDetailsReq } from 'components/movie-details/movie-details.types';
 import { FormItem } from 'components/common';
 import {
   CloseButton,
@@ -14,28 +14,28 @@ import {
   ModalTitle,
   StyledModal,
   Wrapper
-} from './user-details-modal.styled';
-import { useSaveUserDetails } from './user-details.modal.hooks';
+} from './movie-details-modal.styled';
+import { useSaveMovieDetails } from './movie-details.modal.hooks';
 import { FormInputs, validationSchema } from './utils';
 
 type Props = {
   id: string;
-  initialValues: UpdateUserDetailsReq;
+  initialValues: UpdateMovieDetailsReq;
 };
 
-export const UserDetailsModal = ({ id, initialValues }: Props): JSX.Element => {
+export const MovieDetailsModal = ({ id, initialValues }: Props): JSX.Element => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
   const { isModalVisible, closeModal, openModal, isSaveEnabled, setIsSaveEnabled } = useAntdModal(form);
-  const { saveUserDetailss, isSaving } = useSaveUserDetails(id, closeModal);
+  const { saveMovieData, isSaving } = useSaveMovieDetails(id, closeModal);
 
   const handleValuesChange = (): void => {
     const changed = isEqual(initialValues, form.getFieldsValue(true));
     setIsSaveEnabled(!changed);
   };
 
-  const handleSubmit = async (values: UpdateUserDetailsReq): Promise<void> => {
-    await saveUserDetailss(values);
+  const handleSubmit = async (values: UpdateMovieDetailsReq): Promise<void> => {
+    await saveMovieData(values);
     closeModal();
   };
 
@@ -54,7 +54,7 @@ export const UserDetailsModal = ({ id, initialValues }: Props): JSX.Element => {
       >
         <Spin spinning={isSaving}>
           <ModalHeader>
-            <ModalTitle>{t('dashboard-details-modal.edit')}</ModalTitle>
+            <ModalTitle>{t('movie-details-modal.edit')}</ModalTitle>
             {isSaveEnabled && (
               <ModalButtons>
                 <ModalButton onClick={closeModal}>{t('cancel')}</ModalButton>
@@ -66,14 +66,14 @@ export const UserDetailsModal = ({ id, initialValues }: Props): JSX.Element => {
             <Wrapper>
               <FormItem
                 name={FormInputs.TIMEZONE}
-                label={t('dashboard-details.timezone')}
+                label={t('movie-details.timezone')}
                 rules={validationSchema[FormInputs.TIMEZONE]}
               >
                 <Select options={sortedTimezone} />
               </FormItem>
               <FormItem
                 name={FormInputs.BUDGET}
-                label={t('dashboard-details.budget')}
+                label={t('movie-details.budget')}
                 rules={validationSchema[FormInputs.BUDGET]}
               >
                 <InputNumber />

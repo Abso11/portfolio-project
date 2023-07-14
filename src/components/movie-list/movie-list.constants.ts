@@ -1,5 +1,2 @@
 export const today = new Date();
-export const yesterday = new Date();
-yesterday.setDate(yesterday.getDate() - 1);
-export const yearAgo = new Date();
-yearAgo.setMonth(yearAgo.getMonth() - 12);
+export const startDate = new Date('July 10, 2000 03:24:00');

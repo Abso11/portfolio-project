@@ -4,8 +4,8 @@ import routeData, { generatePath } from 'react-router';
 import { server } from 'mocks/server';
 import { render } from 'tests';
 import apiPaths from 'utils/api-paths';
-import { userDetailsData } from 'mocks/responses';
-import UserDetails from './user-details';
+import { mockedMovieDetails } from 'mocks/responses';
+import { MovieDetails } from './movie-details';
 
 jest.mock('react-router', () => ({
   ...jest.requireActual('react-router'),
@@ -18,15 +18,15 @@ const {
 
 describe('User Details', () => {
   beforeEach(() => {
-    jest.spyOn(routeData, 'useParams').mockReturnValue({ id: userDetailsData[0]?.id });
+    jest.spyOn(routeData, 'useParams').mockReturnValue({ id: mockedMovieDetails[0]?.id });
   });
 
   it('should render user details correctly', async () => {
-    render(<UserDetails />);
+    render(<MovieDetails />);
 
     await waitForElementToBeRemoved(() => screen.getByTestId('spinner'));
 
-    const userName = await screen.findByText(userDetailsData[0]?.id as string);
+    const userName = await screen.findByText(mockedMovieDetails[0]?.id as string);
 
     await act(async () => {
       expect(userName).toBeInTheDocument();
@@ -36,7 +36,7 @@ describe('User Details', () => {
   it('should render error handle correctly', async () => {
     server.use(rest.get(`*${MOVIE_DETAILS}`, (_req, res, ctx) => res(ctx.status(400))));
 
-    render(<UserDetails />);
+    render(<MovieDetails />);
     await waitForElementToBeRemoved(() => screen.getByTestId('spinner'));
 
     const refreshMessage = await screen.findByText('Try to refresh');
@@ -45,7 +45,7 @@ describe('User Details', () => {
 
   describe('Modal tests', () => {
     it('should not render the save button if no changes are made', async () => {
-      render(<UserDetails />);
+      render(<MovieDetails />);
 
       await waitForElementToBeRemoved(() => screen.getByTestId('spinner'));
 
@@ -59,11 +59,11 @@ describe('User Details', () => {
     });
 
     it('check if the User Details modal is hidden by default and if it is visible after clicking on the button, and hidden after click cancel button', async () => {
-      render(<UserDetails />);
+      render(<MovieDetails />);
 
       await waitForElementToBeRemoved(() => screen.getByTestId('spinner'));
 
-      expect(screen.getByText(userDetailsData[0]?.budget as number)).toBeInTheDocument();
+      expect(screen.getByText(mockedMovieDetails[0]?.budget as number)).toBeInTheDocument();
       expect(screen.queryByText('Edit user details')).not.toBeInTheDocument();
 
       const editButton = screen.queryByRole('button', { name: 'Edit' });
@@ -86,7 +86,7 @@ describe('User Details', () => {
     });
 
     it('check if can edit User Detais Form, save and then see if changes appears', async () => {
-      render(<UserDetails />);
+      render(<MovieDetails />);
 
       const mockUrl = jest.fn();
       const mockBody = jest.fn();
@@ -97,7 +97,7 @@ describe('User Details', () => {
 
       await waitForElementToBeRemoved(() => screen.getByTestId('spinner'));
 
-      expect(screen.getByText(userDetailsData[0]?.budget as number)).toBeInTheDocument();
+      expect(screen.getByText(mockedMovieDetails[0]?.budget as number)).toBeInTheDocument();
       expect(screen.queryByText('Edit user details')).not.toBeInTheDocument();
 
       const editButton = screen.queryByRole('button', { name: 'Edit' });
@@ -116,11 +116,11 @@ describe('User Details', () => {
       fireEvent.click(saveButton);
 
       await waitFor(() => {
-        expect(mockBody).toBeCalledWith({ timezone: userDetailsData[0]?.timezone as string, budget: 15000 });
+        expect(mockBody).toBeCalledWith({ timezone: mockedMovieDetails[0]?.timezone as string, budget: 15000 });
       });
 
       const expectedUrl = generatePath(MOVIE_DETAILS, {
-        id: userDetailsData[0]?.id
+        id: mockedMovieDetails[0]?.id
       });
 
       expect(mockUrl).toHaveBeenCalledWith(expect.stringContaining(expectedUrl));

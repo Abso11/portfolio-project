@@ -10,18 +10,18 @@ describe('Navigation', () => {
     render(<Navigation />);
   });
 
-  it(`Dashboard list menu item should redirect to ${appRoutes.app.movies}`, () => {
+  it(`Movie list menu item should redirect to ${appRoutes.app.movies}`, () => {
     const link = screen.getByRole('listitem', {
-      name: t<string>('menu.dashboard-list')
+      name: t<string>('menu.movie-list')
     });
     userEvent.click(link as Element);
 
     expect(window.location.pathname).toBe(appRoutes.app.movieDetails);
   });
 
-  it(`User details menu item should redirect to ${appRoutes.app.movieDetails}`, async () => {
+  it(`Movie details menu item should redirect to ${appRoutes.app.movieDetails}`, async () => {
     const link = screen.getByRole('listitem', {
-      name: t<string>('menu.user-details')
+      name: t<string>('menu.movie-details')
     });
     userEvent.click(link as Element);
 

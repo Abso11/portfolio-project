@@ -11,7 +11,7 @@ export const MovieListDetails = ({ details, poster, title }: MovieListDetailsPro
       <StyledMovieDetails>
         {Object.keys(details).map((detailKey) => (
           <div key={detailKey}>
-            <p>{`${t(`dashboard-list.${detailKey}`)}: `}</p>
+            <p>{`${t(`movie-list.${detailKey}`)}: `}</p>
             <p>{`${details[detailKey]}`}</p>
           </div>
         ))}
