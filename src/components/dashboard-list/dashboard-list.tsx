@@ -15,8 +15,8 @@ export const DashboardList = (): JSX.Element => {
   const [isSidebarVisible, setIsSidebarVisible] = useState<boolean>(false);
   const [selectedUserId, setSelectedUserId] = useState<string>('');
   const { t } = useTranslation();
-  const { listQuery, setListQuery } = useListQuery('timestamp', {
-    start_date: yesterday,
+  const { listQuery, setListQuery } = useListQuery('user_id', {
+    start_date: new Date('July 10, 2000 03:24:00'),
     end_date: today
   });
   const { data, isError, isLoading, refetch, isFetching } = useFetchDashboardList(listQuery);
@@ -55,7 +55,9 @@ export const DashboardList = (): JSX.Element => {
             pagination={false}
             rowClassName={(_, index) => (index % 2 ? 'even' : 'odd')}
             expandable={{
-              expandedRowRender: ({ details }) => <DashboardListDetails details={details} />,
+              expandedRowRender: ({ poster, details, action }) => (
+                <DashboardListDetails details={details} poster={poster} action={action} />
+              ),
               expandIcon: ({ expanded, onExpand, record }) => (
                 <ExpandSwitch isExpanded={expanded} onClick={(e) => onExpand(record, e)}>
                   <ExpandIcon />

@@ -47,7 +47,6 @@ export const DashboardListHeader = ({ onRangeChange, listQuery, setListQuery }: 
         onSave={onRangeChange}
         startDate={listQuery.start_date as Date}
         endDate={listQuery.end_date as Date}
-        disableBefore={yearAgo}
         showTimeFormat='HH:mm'
       />
       <SearchBarWithHints
