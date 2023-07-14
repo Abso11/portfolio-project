@@ -16,20 +16,20 @@ const {
   APP: { MOVIE_DETAILS }
 } = apiPaths;
 
-describe('User Details', () => {
+describe('Movie Details', () => {
   beforeEach(() => {
     jest.spyOn(routeData, 'useParams').mockReturnValue({ id: mockedMovieDetails[0]?.id });
   });
 
-  it('should render user details correctly', async () => {
+  it('should render movie details correctly', async () => {
     render(<MovieDetails />);
 
     await waitForElementToBeRemoved(() => screen.getByTestId('spinner'));
 
-    const userName = await screen.findByText(mockedMovieDetails[0]?.id as string);
+    const titleId = await screen.findByText(mockedMovieDetails[0]?.id as string);
 
     await act(async () => {
-      expect(userName).toBeInTheDocument();
+      expect(titleId).toBeInTheDocument();
     });
   });
 
@@ -49,27 +49,27 @@ describe('User Details', () => {
 
       await waitForElementToBeRemoved(() => screen.getByTestId('spinner'));
 
-      expect(screen.queryByText('Edit user details')).not.toBeInTheDocument();
+      expect(screen.queryByText('Edit movie details')).not.toBeInTheDocument();
 
       const editButton = screen.queryByRole('button', { name: 'Edit' });
       fireEvent.click(editButton as Element);
 
-      expect(screen.queryByText('Edit user details')).toBeInTheDocument();
+      expect(screen.queryByText('Edit movie details')).toBeInTheDocument();
       expect(screen.queryByText('Save')).not.toBeInTheDocument();
     });
 
-    it('check if the User Details modal is hidden by default and if it is visible after clicking on the button, and hidden after click cancel button', async () => {
+    it('check if the Movie Details modal is hidden by default and if it is visible after clicking on the button, and hidden after click cancel button', async () => {
       render(<MovieDetails />);
 
       await waitForElementToBeRemoved(() => screen.getByTestId('spinner'));
 
       expect(screen.getByText(mockedMovieDetails[0]?.budget as number)).toBeInTheDocument();
-      expect(screen.queryByText('Edit user details')).not.toBeInTheDocument();
+      expect(screen.queryByText('Edit movie details')).not.toBeInTheDocument();
 
       const editButton = screen.queryByRole('button', { name: 'Edit' });
       fireEvent.click(editButton as Element);
 
-      expect(screen.queryByText('Edit user details')).toBeInTheDocument();
+      expect(screen.queryByText('Edit movie details')).toBeInTheDocument();
 
       const budgetInput = screen.getByRole('spinbutton', { name: 'Budget' });
       fireEvent.change(budgetInput, { target: { value: '11000' } });
@@ -81,11 +81,11 @@ describe('User Details', () => {
       const cancelButton = screen.getByRole('button', { name: 'Cancel' });
       fireEvent.click(cancelButton);
 
-      expect(screen.queryByText('Edit user details')).not.toBeVisible();
-      expect(await screen.findByText('Edit user details')).toBeInTheDocument();
+      expect(screen.queryByText('Edit movie details')).not.toBeVisible();
+      expect(await screen.findByText('Edit movie details')).toBeInTheDocument();
     });
 
-    it('check if can edit User Detais Form, save and then see if changes appears', async () => {
+    it('check if can edit Movie Details Form, save and then see if changes appears', async () => {
       render(<MovieDetails />);
 
       const mockUrl = jest.fn();
@@ -98,12 +98,12 @@ describe('User Details', () => {
       await waitForElementToBeRemoved(() => screen.getByTestId('spinner'));
 
       expect(screen.getByText(mockedMovieDetails[0]?.budget as number)).toBeInTheDocument();
-      expect(screen.queryByText('Edit user details')).not.toBeInTheDocument();
+      expect(screen.queryByText('Edit movie details')).not.toBeInTheDocument();
 
       const editButton = screen.queryByRole('button', { name: 'Edit' });
       fireEvent.click(editButton as Element);
 
-      expect(screen.queryByText('Edit user details')).toBeInTheDocument();
+      expect(screen.queryByText('Edit movie details')).toBeInTheDocument();
 
       const budgetInput = screen.getByRole('spinbutton', { name: 'Budget' });
       fireEvent.change(budgetInput, { target: { value: '15000' } });
@@ -126,7 +126,7 @@ describe('User Details', () => {
       expect(mockUrl).toHaveBeenCalledWith(expect.stringContaining(expectedUrl));
 
       expect(await screen.findByText('15000')).toBeInTheDocument();
-      expect(screen.queryByText('Edit user details')).not.toBeInTheDocument();
+      expect(screen.queryByText('Edit movie details')).not.toBeInTheDocument();
     });
   });
 });
