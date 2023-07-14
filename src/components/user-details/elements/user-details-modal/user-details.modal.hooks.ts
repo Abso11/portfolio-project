@@ -9,10 +9,10 @@ import { QueryKeysUserDetails } from 'enums';
 
 const saveUserDetails = async (id: string, payload: UpdateUserDetailsReq): Promise<void> => {
   const {
-    DASHBOARD: { USER_DETAILS }
+    APP: { MOVIE_DETAILS }
   } = apiPaths;
 
-  const { data } = await patchData<UpdateUserDetailsReq, void>(generatePath(USER_DETAILS, { id }), payload);
+  const { data } = await patchData<UpdateUserDetailsReq, void>(generatePath(MOVIE_DETAILS, { id }), payload);
   return data;
 };
 

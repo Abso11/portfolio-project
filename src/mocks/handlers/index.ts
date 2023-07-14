@@ -1,2 +1,2 @@
-export * from './dashboard';
-export * from './user-details';
+export * from './movie-list';
+export * from './movie-details';

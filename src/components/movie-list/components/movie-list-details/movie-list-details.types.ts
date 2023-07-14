@@ -1,6 +1,6 @@
-export type DashboardListDetailsProps = {
+export type MovieListDetailsProps = {
+  title: string;
   poster?: string;
-  action: string;
   details: {
     [key: string]: string;
   };

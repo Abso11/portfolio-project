@@ -1,11 +1,10 @@
 import { useState, Dispatch, SetStateAction } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SearchBarWithHints, ViewDatePicker } from 'components/common';
-import { yearAgo } from 'components/dashboard-list/dashboard-list.constants';
 import { useDebounce } from 'hooks';
 import { ListQuery } from 'types';
-import { useDashboardListHints } from './dashboard-list-header.hooks';
-import { FilterWrapper } from './dashboard-list-header.styled';
+import { useMovieListHints } from './movie-list-header.hooks';
+import { FilterWrapper } from './movie-list-header.styled';
 
 type Props = {
   onRangeChange: (start: Date, end: Date) => void;
@@ -13,12 +12,12 @@ type Props = {
   setListQuery: Dispatch<SetStateAction<ListQuery>>;
 };
 
-export const DashboardListHeader = ({ onRangeChange, listQuery, setListQuery }: Props): JSX.Element => {
+export const MovieListHeader = ({ onRangeChange, listQuery, setListQuery }: Props): JSX.Element => {
   const { t } = useTranslation();
   const [searchText, setSearchText] = useState<string>('');
   const debouncedValue = useDebounce<string>(searchText);
 
-  const { data: hints, isFetching, refetch } = useDashboardListHints(listQuery, searchText);
+  const { data: hints, isFetching, refetch } = useMovieListHints(listQuery, searchText);
 
   const handleSelectFilter = (key?: string, text?: string): void => {
     if (key && text)

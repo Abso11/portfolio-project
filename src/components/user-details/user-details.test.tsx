@@ -13,7 +13,7 @@ jest.mock('react-router', () => ({
 }));
 
 const {
-  DASHBOARD: { USER_DETAILS }
+  APP: { MOVIE_DETAILS }
 } = apiPaths;
 
 describe('User Details', () => {
@@ -34,7 +34,7 @@ describe('User Details', () => {
   });
 
   it('should render error handle correctly', async () => {
-    server.use(rest.get(`*${USER_DETAILS}`, (_req, res, ctx) => res(ctx.status(400))));
+    server.use(rest.get(`*${MOVIE_DETAILS}`, (_req, res, ctx) => res(ctx.status(400))));
 
     render(<UserDetails />);
     await waitForElementToBeRemoved(() => screen.getByTestId('spinner'));
@@ -119,7 +119,7 @@ describe('User Details', () => {
         expect(mockBody).toBeCalledWith({ timezone: userDetailsData[0]?.timezone as string, budget: 15000 });
       });
 
-      const expectedUrl = generatePath(USER_DETAILS, {
+      const expectedUrl = generatePath(MOVIE_DETAILS, {
         id: userDetailsData[0]?.id
       });
 

@@ -74,7 +74,7 @@ export const SearchBarWithHints = ({
         {!isFetching && data?.length === 0 && <Hint>{t('no-data')}</Hint>}
         {!isFetching &&
           data?.map(({ field, text }) => (
-            <Hint onClick={handleOnClick(field, text)} key={text} data-testid={'dashboard-list-hints'}>
+            <Hint onClick={handleOnClick(field, text)} key={text} data-testid={'movie-list-hints'}>
               <span>{text}</span>
               <SpanField withTags={withTags}>
                 {withTags && <span>{t('dashboard-list.under')} </span>}

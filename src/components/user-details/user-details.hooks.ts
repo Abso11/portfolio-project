@@ -6,10 +6,10 @@ import { UserDetailsReq, UserDetailsRes } from './user-details.types';
 
 const fetchUserDetails = async (id: UserDetailsReq): Promise<UserDetailsRes> => {
   const {
-    DASHBOARD: { USER_DETAILS }
+    APP: { MOVIE_DETAILS }
   } = apiPaths;
 
-  const { data } = await getData<UserDetailsReq, UserDetailsRes>(generatePath(USER_DETAILS, id));
+  const { data } = await getData<UserDetailsReq, UserDetailsRes>(generatePath(MOVIE_DETAILS, id));
   return data;
 };
 

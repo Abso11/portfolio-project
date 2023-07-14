@@ -3,8 +3,6 @@ import { useTranslation } from 'react-i18next';
 import find from 'lodash.find';
 import ContentWrapper from 'components/common/content-wrapper/content-wrapper';
 import { timezones } from 'utils/timezones';
-import ReactPlayer from 'react-player';
-import { Spinner } from 'components/common';
 import { useFetchUserDetails } from './user-details.hooks';
 import { SectionTitles, DetailsTile, StyledWrapper, UserDetailsModal } from './elements';
 

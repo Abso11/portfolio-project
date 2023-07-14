@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Menu } from 'components/responsive-menu';
 import { appRoutes } from 'urls';
-import { mockedDashboardList } from 'mocks/responses';
+import { mockedMovieList } from 'mocks/responses';
 
 const { MenuItem } = Menu;
 
@@ -18,14 +18,14 @@ export const Navigation = (): JSX.Element => {
       <MenuItem
         title={t('menu.dashboard-list')}
         onClick={() => {
-          navigate(appRoutes.app.dashboard);
+          navigate(appRoutes.app.movies);
         }}
         isActive={pathname === '/'}
       />
       <MenuItem
         title={t('menu.user-details')}
         onClick={() => {
-          navigate(appRoutes.app.dashboardDetails.replace(':id', mockedDashboardList[0]?.user_id as string));
+          navigate(appRoutes.app.movieDetails.replace(':id', mockedMovieList[0]?.title_id as string));
           // navigate always to first existing userid by default
         }}
         isActive={pathname.includes('/details')}

@@ -1,18 +1,14 @@
-import { DashboardListRes } from 'components/dashboard-list/dashboard-list.types';
+import { MovieListRes } from 'components/movie-list/movie-list.types';
 
-const today = new Date();
-const todayMidnight = new Date();
-todayMidnight.setHours(0, 0, 0, 0);
-
-export const mockedDashboardList: DashboardListRes['logs'] = [
+export const mockedMovieList: MovieListRes['movie_data'] = [
   {
     id: '1',
-    timestamp: new Date('July 10, 2011 00:00:00'),
-    action: 'Game of Thrones',
-    user_id: '1A',
-    user_name: 'David Benioff, D.B. Weiss',
+    released: new Date('July 10, 2011 00:00:00'),
+    title: 'GoT',
+    title_id: '1A',
+    creator_name: 'David Benioff, D.B. Weiss',
     status: 'Finished',
-    error_code: 'tt0944947',
+    imdb_id: 'tt0944947',
     poster:
       'https://m.media-amazon.com/images/M/MV5BN2IzYzBiOTQtNGZmMi00NDI5LTgxMzMtN2EzZjA1NjhlOGMxXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg',
     details: {
@@ -24,12 +20,12 @@ export const mockedDashboardList: DashboardListRes['logs'] = [
   },
   {
     id: '2',
-    timestamp: new Date('July 26, 2019 00:00:00'),
-    action: 'The Boys',
-    user_id: '2A',
-    user_name: 'Eric Kripke',
-    status: 'Not finished',
-    error_code: 'tt1190634"',
+    released: new Date('July 26, 2019 00:00:00'),
+    title: 'The Boys',
+    title_id: '2A',
+    creator_name: 'Eric Kripke',
+    status: 'In progress',
+    imdb_id: 'tt1190634',
     poster:
       'https://m.media-amazon.com/images/M/MV5BOTEyNDJhMDAtY2U5ZS00OTMzLTkwODktMjU3MjFkZWVlMGYyXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_SX300.jpg',
     details: {
@@ -40,12 +36,12 @@ export const mockedDashboardList: DashboardListRes['logs'] = [
   },
   {
     id: '3',
-    timestamp: new Date('April 26, 2015 00:00:00'),
-    action: 'Better Call Saul',
-    user_id: '3A',
-    user_name: 'Vince Gilligan, Peter Gould',
+    released: new Date('April 26, 2015 00:00:00'),
+    title: 'Better Call Saul',
+    title_id: '3A',
+    creator_name: 'Peter Gould',
     status: 'Finished',
-    error_code: 'tt3032476',
+    imdb_id: 'tt3032476',
     poster:
       'https://m.media-amazon.com/images/M/MV5BZDA4YmE0OTYtMmRmNS00Mzk2LTlhM2MtNjk4NzBjZGE1MmIyXkEyXkFqcGdeQXVyMTMzNDExODE5._V1_SX300.jpg',
     details: {
@@ -57,12 +53,12 @@ export const mockedDashboardList: DashboardListRes['logs'] = [
   },
   {
     id: '4',
-    timestamp: new Date('April 26, 2008 00:00:00'),
-    action: 'Breaking Bad',
-    user_id: '4A',
-    user_name: 'Vince Gilligan',
+    released: new Date('April 26, 2008 00:00:00'),
+    title: 'Breaking Bad',
+    title_id: '4A',
+    creator_name: 'Vince Gilligan',
     status: 'Finished',
-    error_code: 'tt0903747',
+    imdb_id: 'tt0903747',
     poster:
       'https://m.media-amazon.com/images/M/MV5BYmQ4YWMxYjUtNjZmYi00MDQ1LWFjMjMtNjA5ZDdiYjdiODU5XkEyXkFqcGdeQXVyMTMzNDExODE5._V1_SX300.jpg',
     details: {
@@ -74,12 +70,12 @@ export const mockedDashboardList: DashboardListRes['logs'] = [
   },
   {
     id: '5',
-    timestamp: new Date('April 10, 2015 00:00:00'),
-    action: 'Daredevil',
-    user_id: '5A',
-    user_name: 'Drew Goddard',
+    released: new Date('April 10, 2015 00:00:00'),
+    title: 'Daredevil',
+    title_id: '5A',
+    creator_name: 'Drew Goddard',
     status: 'Finished',
-    error_code: 'tt3322312',
+    imdb_id: 'tt3322312',
     poster:
       'https://m.media-amazon.com/images/M/MV5BYjJhMjcwNjAtODc0ZC00Yjg5LWExYzEtMzc5OWJhNjI1NTQ4XkEyXkFqcGdeQXVyNTA3MTU2MjE@._V1_SX300.jpg',
     details: {
@@ -90,12 +86,12 @@ export const mockedDashboardList: DashboardListRes['logs'] = [
   },
   {
     id: '6',
-    timestamp: new Date('September 3, 2008 00:00:00'),
-    action: 'Sons of Anarchy',
-    user_id: '6A',
-    user_name: 'Kurt Sutter',
+    released: new Date('September 3, 2008 00:00:00'),
+    title: 'Sons of Anarchy',
+    title_id: '6A',
+    creator_name: 'Kurt Sutter',
     status: 'Finished',
-    error_code: 'tt1124373',
+    imdb_id: 'tt1124373',
     poster:
       'https://m.media-amazon.com/images/M/MV5BYTMxMGY1OGQtZmUzNy00NjhmLTlhNzItZDBiNzhlMTgwZjZlXkEyXkFqcGdeQXVyNDIzMzcwNjc@._V1_SX300.jpg',
     details: {
@@ -106,12 +102,12 @@ export const mockedDashboardList: DashboardListRes['logs'] = [
   },
   {
     id: '7',
-    timestamp: new Date('August 28, 2015 00:00:00'),
-    action: 'Narcos',
-    user_id: '7A',
-    user_name: 'Carlo Bernard',
+    released: new Date('August 28, 2015 00:00:00'),
+    title: 'Narcos',
+    title_id: '7A',
+    creator_name: 'Carlo Bernard',
     status: 'Finished',
-    error_code: 'tt2707408"',
+    imdb_id: 'tt2707408',
     poster:
       'https://m.media-amazon.com/images/M/MV5BNmFjODU3YzgtMGUwNC00ZGI3LWFkZjQtMjkxZDc3NmQ1MzcyXkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_SX300.jpg',
     details: {
@@ -123,12 +119,12 @@ export const mockedDashboardList: DashboardListRes['logs'] = [
   },
   {
     id: '8',
-    timestamp: new Date('August 21, 2022 00:00:00'),
-    action: 'House of the Dragon',
-    user_id: '8A',
-    user_name: 'George R.R. Martin',
-    status: 'Not finished',
-    error_code: 'tt11198330',
+    released: new Date('August 21, 2022 00:00:00'),
+    title: 'House of the Dragon',
+    title_id: '8A',
+    creator_name: 'George R.R. Martin',
+    status: 'In progress',
+    imdb_id: 'tt11198330',
     poster:
       'https://m.media-amazon.com/images/M/MV5BZjBiOGIyY2YtOTA3OC00YzY1LThkYjktMGRkYTNhNTExY2I2XkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_SX300.jpg',
     details: {
@@ -140,12 +136,12 @@ export const mockedDashboardList: DashboardListRes['logs'] = [
   },
   {
     id: '9',
-    timestamp: new Date('November 17, 2017 00:00:00'),
-    action: 'The Punisher',
-    user_id: '9A',
-    user_name: 'Steve Lightfoot',
+    released: new Date('November 17, 2017 00:00:00'),
+    title: 'The Punisher',
+    title_id: '9A',
+    creator_name: 'Steve Lightfoot',
     status: 'Finished',
-    error_code: 'tt11198330',
+    imdb_id: 'tt11198330',
     poster:
       'https://m.media-amazon.com/images/M/MV5BNjJhZDZhNWYtMjdhYS00NjkyLWE5NzItMzljNmQ3NGE4MGZjXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_SX300.jpg',
     details: {
@@ -157,12 +153,12 @@ export const mockedDashboardList: DashboardListRes['logs'] = [
   },
   {
     id: '10',
-    timestamp: new Date('May 6, 2019 00:00:00'),
-    action: 'Chernobyl',
-    user_id: '1B',
-    user_name: 'Craig Mazin',
+    released: new Date('May 6, 2019 00:00:00'),
+    title: 'Chernobyl',
+    title_id: '1B',
+    creator_name: 'Craig Mazin',
     status: 'Finished',
-    error_code: 'tt7366338',
+    imdb_id: 'tt7366338',
     poster:
       'https://m.media-amazon.com/images/M/MV5BNTdkN2QwMDItMDVhNS00ZjFiLWEzNTctMzY5ODQzYWNkMDllXkEyXkFqcGdeQXVyMTMzNDExODE5._V1_SX300.jpg',
     details: {
@@ -174,12 +170,12 @@ export const mockedDashboardList: DashboardListRes['logs'] = [
   },
   {
     id: '11',
-    timestamp: new Date('November 12, 2019 00:00:00'),
-    action: 'The Mandalorian',
-    user_id: '2B',
-    user_name: 'Jon Favreau',
-    status: 'Not finished',
-    error_code: 'tt8111088',
+    released: new Date('November 12, 2019 00:00:00'),
+    title: 'The Mandalorian',
+    title_id: '2B',
+    creator_name: 'Jon Favreau',
+    status: 'In progress',
+    imdb_id: 'tt8111088',
     poster:
       'https://m.media-amazon.com/images/M/MV5BN2M5YWFjN2YtYzU2YS00NzBlLTgwZWUtYWQzNWFhNDkyYjg3XkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_SX300.jpg',
     details: {
@@ -191,12 +187,12 @@ export const mockedDashboardList: DashboardListRes['logs'] = [
   },
   {
     id: '12',
-    timestamp: new Date('January 15, 2023 00:00:00'),
-    action: 'The Last of Us',
-    user_id: '3B',
-    user_name: 'Neil Druckmann, Craig Mazin',
-    status: 'Not finished',
-    error_code: 'tt3581920',
+    released: new Date('January 15, 2023 00:00:00'),
+    title: 'The Last of Us',
+    title_id: '3B',
+    creator_name: 'Neil Druckmann, Craig Mazin',
+    status: 'In progress',
+    imdb_id: 'tt3581920',
     poster:
       'https://m.media-amazon.com/images/M/MV5BZGUzYTI3M2EtZmM0Yy00NGUyLWI4ODEtN2Q3ZGJlYzhhZjU3XkEyXkFqcGdeQXVyNTM0OTY1OQ@@._V1_SX300.jpg',
     details: {
@@ -208,12 +204,12 @@ export const mockedDashboardList: DashboardListRes['logs'] = [
   },
   {
     id: '13',
-    timestamp: new Date('January 15, 2005 00:00:00'),
-    action: 'Prison Break',
-    user_id: '4B',
-    user_name: 'Paul T. Scheuring"',
+    released: new Date('January 15, 2005 00:00:00'),
+    title: 'Prison Break',
+    title_id: '4B',
+    creator_name: 'Paul T. Scheuring"',
     status: 'Finished',
-    error_code: 'tt0455275',
+    imdb_id: 'tt0455275',
     poster: 'https://m.media-amazon.com/images/M/MV5BMTg3NTkwNzAxOF5BMl5BanBnXkFtZTcwMjM1NjI5MQ@@._V1_SX300.jpg',
     details: {
       description:

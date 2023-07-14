@@ -4,35 +4,30 @@ import { getData } from 'utils/api-helpers';
 import apiPaths from 'utils/api-paths';
 import { ListQuery } from 'types';
 import { OrderDirection, SortOrder, QueryKeysDashboard } from 'enums';
-import {
-  DashBoardListReqFilter,
-  DashboardListReq,
-  DashboardListRes,
-  DashboardListSortableFields
-} from './dashboard-list.types';
+import { MovieListReqFilter, MovieListReq, MovieListRes, MovieListSortableFields } from './movie-list.types';
 
-const fetchDashboardList = async (request: DashboardListReq): Promise<DashboardListRes> => {
+const fetchMovieList = async (request: MovieListReq): Promise<MovieListRes> => {
   const {
-    DASHBOARD: { LIST }
+    APP: { MOVIE_LIST }
   } = apiPaths;
 
-  const { data } = await getData<DashboardListReq, DashboardListRes>(LIST, request);
+  const { data } = await getData<MovieListReq, MovieListRes>(MOVIE_LIST, request);
   return data;
 };
 
-export const useFetchDashboardList = (listQuery: ListQuery): UseQueryResult<DashboardListRes, Error> => {
+export const useFetchMovieList = (listQuery: ListQuery): UseQueryResult<MovieListRes, Error> => {
   const { skip, take, sortField, sortOrder, startDate, endDate, filter } = usePaginationConfig(listQuery);
   return useQuery(
     [QueryKeysDashboard.DashboardList, skip, take, sortOrder, sortField, startDate, endDate, filter],
     () =>
-      fetchDashboardList({
+      fetchMovieList({
         skip,
         take,
         sort_order: sortOrder === OrderDirection.ASC ? SortOrder.ASC : SortOrder.DESC,
-        sort_field: sortField as DashboardListSortableFields,
+        sort_field: sortField as MovieListSortableFields,
         start_date: startDate as Date,
         end_date: endDate as Date,
-        filter: filter as DashBoardListReqFilter
+        filter: filter as MovieListReqFilter
       }),
     {
       refetchOnWindowFocus: false
