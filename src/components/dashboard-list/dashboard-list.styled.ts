@@ -118,6 +118,7 @@ export const StyledLink = styled(Link)`
 
 export const StyledEditButton = styled.div`
   margin-top: 6px;
+
   :hover {
     cursor: pointer;
   }

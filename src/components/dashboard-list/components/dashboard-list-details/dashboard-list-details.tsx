@@ -1,17 +1,21 @@
 import { useTranslation } from 'react-i18next';
-import { DetailsWrapper } from './dashboard-list-details.styled';
+import { DetailsWrapper, StyledMovieDetails } from './dashboard-list-details.styled';
 import { DashboardListDetailsProps } from './dashboard-list-details.types';
 
-export const DashboardListDetails = ({ details }: DashboardListDetailsProps): JSX.Element => {
+export const DashboardListDetails = ({ details, poster, action }: DashboardListDetailsProps): JSX.Element => {
   const { t } = useTranslation();
+
   return (
     <DetailsWrapper>
-      {Object.keys(details).map((detailKey) => (
-        <div key={detailKey}>
-          <span>{`${t(`dashboard-list.${detailKey}`)}: `}</span>
-          <span>{`"${details[detailKey]}"`}</span>
-        </div>
-      ))}
+      <img src={poster} alt={action} />
+      <StyledMovieDetails>
+        {Object.keys(details).map((detailKey) => (
+          <div key={detailKey}>
+            <p>{`${t(`dashboard-list.${detailKey}`)}: `}</p>
+            <p>{`${details[detailKey]}`}</p>
+          </div>
+        ))}
+      </StyledMovieDetails>
     </DetailsWrapper>
   );
 };

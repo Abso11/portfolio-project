@@ -21,6 +21,7 @@ export type DashboardListRes = {
     user_name: string;
     status?: string;
     error_code?: string;
+    poster?: string;
     details: {
       [key: string]: string;
     };

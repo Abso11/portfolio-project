@@ -28,9 +28,4 @@
     "vitest.config.ts",
     "src/types/svg.d.ts"
   ],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ]
 }
