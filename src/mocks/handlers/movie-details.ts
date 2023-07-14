@@ -2,14 +2,14 @@ import { rest } from 'msw';
 import { generatePath } from 'react-router';
 import apiPaths from 'utils/api-paths';
 import { UpdateUserDetailsReq } from 'components/user-details/user-details.types';
-import { userDetailsData } from 'mocks/responses/user-details.fixtures';
+import { userDetailsData } from 'mocks/responses/movie-details.fixtures';
 
 const {
-  DASHBOARD: { USER_DETAILS }
+  APP: { MOVIE_DETAILS }
 } = apiPaths;
 
-export const userDetailsHandler = [
-  rest.get(generatePath(USER_DETAILS, { id: ':id' }), (req, res, ctx) => {
+export const movieDetailsHandler = [
+  rest.get(generatePath(MOVIE_DETAILS, { id: ':id' }), (req, res, ctx) => {
     const { id } = req.params;
 
     if (!id) {
@@ -27,7 +27,7 @@ export const userDetailsHandler = [
     return res(ctx.delay(500), ctx.status(200), ctx.json(response));
   }),
 
-  rest.patch(generatePath(USER_DETAILS, { id: ':id' }), (req, res, ctx) => {
+  rest.patch(generatePath(MOVIE_DETAILS, { id: ':id' }), (req, res, ctx) => {
     const { id } = req.params;
     const existingUserIndex = userDetailsData.findIndex((item) => item.id === id);
 

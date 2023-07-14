@@ -13,18 +13,20 @@
   "page-not-found": "Page not found",
   "helpful-links": "Helpful links",
   "dashboard-list": {
-    "timestamp": "Released",
-    "action": "Title",
-    "user_id": "Title ID",
-    "user_name": "Creators",
+    "released": "Released",
+    "title": "Title",
+    "title_id": "Title ID",
+    "creator_name": "Creators",
     "status": "Status",
-    "error_code": "IMDB ID",
+    "imdb_id": "IMDB ID",
     "description": "Description",
     "error": "Error",
+    "total_seasons": "Total seasons",
+    "country": "Country",
     "searching-for": "Searching for: ",
     "under": "under",
     "per-page": "per page",
-    "header": "Search for users..."
+    "header": "Search movies by Title | ID | Creators | Status..."
   },
   "dashboard-details": {
     "name": "Name",
@@ -38,16 +40,16 @@
     "gender": "Gender"
   },
   "dashboard-list-edit-form": {
-    "edit-user": "Editing user",
-    "user-name": "User name",
-    "action": "Action"
+    "edit-user": "Editing Title ID",
+    "user-name": "Creator Name",
+    "action": "Title"
   },
   "dashboard-details-modal": {
    "edit": "Edit user details"
   },
   "menu": {
-    "dashboard-list": "Dashboard List",
-    "user-details": "User Details"
+    "dashboard-list": "Movie List",
+    "user-details": "Movie Details"
   },
   "forms": {
     "is-required": "Is required",

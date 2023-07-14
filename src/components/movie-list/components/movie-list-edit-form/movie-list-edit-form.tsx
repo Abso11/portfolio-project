@@ -4,20 +4,20 @@ import { Form, Input, Spin } from 'antd';
 import isEqual from 'lodash.isequal';
 import { useAntdModal } from 'hooks';
 import { FormItem, AntdSidebar } from 'components/common';
-import { UpdateDashboardListReq } from 'components/dashboard-list/dashboard-list.types';
-import { useSaveUserDashboardData } from './dashboard-list-edit-form.hooks';
+import { UpdateMovieListReq } from 'components/movie-list/movie-list.types';
+import { useSaveMovieData } from './movie-list-edit-form.hooks';
 import { FormInputs, validationSchema } from './utils';
-import { StyledEditUser } from './dashboard-list-edit-form.styled';
+import { StyledEditUser } from './movie-list-edit-form.styled';
 
 type Props = {
-  user_id: string;
-  initialValues: { user_name: string; action: string };
+  title_id: string;
+  initialValues: { creator_name: string; title: string };
   isSidebarVisible: boolean;
   onCloseSidebar: () => void;
 };
 
-export const DashboardListEditForm = ({
-  user_id,
+export const MovieListEditForm = ({
+  title_id,
   initialValues,
   isSidebarVisible,
   onCloseSidebar
@@ -27,14 +27,14 @@ export const DashboardListEditForm = ({
 
   const { isSaveEnabled, setIsSaveEnabled } = useAntdModal(form);
 
-  const { saveUserData, isSaving } = useSaveUserDashboardData(onCloseSidebar);
+  const { saveMovieData, isSaving } = useSaveMovieData(onCloseSidebar);
   const handleValuesChange = (): void => {
     const changed = isEqual(initialValues, form.getFieldsValue(true));
     setIsSaveEnabled(!changed);
   };
 
-  const handleSubmit = async (values: UpdateDashboardListReq): Promise<void> => {
-    saveUserData({ ...values, user_id });
+  const handleSubmit = async (values: UpdateMovieListReq): Promise<void> => {
+    saveMovieData({ ...values, title_id });
     form.resetFields();
     onCloseSidebar();
   };
@@ -53,20 +53,20 @@ export const DashboardListEditForm = ({
     >
       <Spin spinning={isSaving}>
         <StyledEditUser>
-          {t('dashboard-list-edit-form.edit-user')}: {user_id}
+          {t('dashboard-list-edit-form.edit-user')}: {title_id}
         </StyledEditUser>
         <Form form={form} initialValues={initialValues} onValuesChange={handleValuesChange} onFinish={handleSubmit}>
           <FormItem
-            name={FormInputs.USER_NAME}
+            name={FormInputs.CREATOR_NAME}
             label={t('dashboard-list-edit-form.user-name')}
-            rules={validationSchema[FormInputs.USER_NAME]}
+            rules={validationSchema[FormInputs.CREATOR_NAME]}
           >
             <Input />
           </FormItem>
           <FormItem
-            name={FormInputs.Action}
+            name={FormInputs.TITLE}
             label={t('dashboard-list-edit-form.action')}
-            rules={validationSchema[FormInputs.Action]}
+            rules={validationSchema[FormInputs.TITLE]}
           >
             <Input />
           </FormItem>

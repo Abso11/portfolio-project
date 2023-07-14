@@ -1,28 +1,25 @@
 import { UseQueryResult, useQuery } from '@tanstack/react-query';
-import { DashBoardListHintsRes, DashboardListHintsReq } from 'components/dashboard-list/dashboard-list.types';
+import { MovieListHintsRes, MovieListHintsReq } from 'components/movie-list/movie-list.types';
 import { usePaginationConfig } from 'hooks';
 import { ListQuery } from 'types';
 import { apiPaths, getData } from 'utils';
 import { QueryKeysDashboard } from 'enums';
 
-const fetchDashboardListHints = async (request: DashboardListHintsReq): Promise<DashBoardListHintsRes> => {
+const fetchMovieListHints = async (request: MovieListHintsReq): Promise<MovieListHintsRes> => {
   const {
-    DASHBOARD: { LIST_HINTS }
+    APP: { MOVIE_LIST_HINTS }
   } = apiPaths;
 
-  const { data } = await getData<DashboardListHintsReq, DashBoardListHintsRes>(LIST_HINTS, request);
+  const { data } = await getData<MovieListHintsReq, MovieListHintsRes>(MOVIE_LIST_HINTS, request);
   return data;
 };
 
-export const useDashboardListHints = (
-  listQuery: ListQuery,
-  searchText: string
-): UseQueryResult<DashBoardListHintsRes> => {
+export const useMovieListHints = (listQuery: ListQuery, searchText: string): UseQueryResult<MovieListHintsRes> => {
   const { startDate, endDate } = usePaginationConfig(listQuery);
   return useQuery(
     [QueryKeysDashboard.DashboardListHints, startDate, endDate, searchText],
     () =>
-      fetchDashboardListHints({
+      fetchMovieListHints({
         start_date: startDate as Date,
         end_date: endDate as Date,
         search_text: searchText

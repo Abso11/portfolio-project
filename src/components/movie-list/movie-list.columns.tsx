@@ -5,12 +5,12 @@ import { AntdColumnTitle } from 'components/common';
 import { OrderDirection } from 'enums';
 import { appRoutes } from 'urls';
 import { ReactComponent as EditIcon } from 'assets/icons/edit.svg';
-import { DashboardListRes } from './dashboard-list.types';
-import { StyledEditButton, StyledLink } from './dashboard-list.styled';
+import { MovieListRes } from './movie-list.types';
+import { StyledEditButton, StyledLink } from './movie-list.styled';
 
 export const formatDate = (date: Date): string => format(new Date(date), 'dd.MM.yyyy HH:mm');
 
-type Column = DashboardListRes['logs'][0];
+type Column = MovieListRes['movie_data'][0];
 
 export const useColumns = (handleOpenSidebar: (id: string) => void, t: TFunction): ColumnsType<Column> => [
   {
@@ -18,16 +18,16 @@ export const useColumns = (handleOpenSidebar: (id: string) => void, t: TFunction
     width: 30,
     render: (_, record) => (
       <StyledEditButton>
-        <EditIcon onClick={() => handleOpenSidebar(record.user_id)} />
+        <EditIcon onClick={() => handleOpenSidebar(record.title_id)} />
       </StyledEditButton>
     )
   },
   {
     title: ({ sortColumns }) => (
-      <AntdColumnTitle dataIndex='timestamp' sortColumns={sortColumns} name={t('dashboard-list.timestamp')} />
+      <AntdColumnTitle dataIndex='released' sortColumns={sortColumns} name={t('dashboard-list.released')} />
     ),
-    dataIndex: 'timestamp',
-    key: 'timestamp',
+    dataIndex: 'released',
+    key: 'released',
     width: 130,
     ellipsis: true,
     sorter: true,
@@ -36,26 +36,29 @@ export const useColumns = (handleOpenSidebar: (id: string) => void, t: TFunction
   },
   {
     title: ({ sortColumns }) => (
-      <AntdColumnTitle dataIndex='action' sortColumns={sortColumns} name={t('dashboard-list.action')} />
+      <AntdColumnTitle dataIndex='title' sortColumns={sortColumns} name={t('dashboard-list.title')} />
     ),
-    dataIndex: 'action',
-    key: 'action',
+    dataIndex: 'title',
+    key: 'title',
     width: 180,
     ellipsis: true,
     sorter: true
   },
   {
-    title: t('dashboard-list.user_id'),
-    dataIndex: 'user_id',
-    key: 'user_id',
+    title: ({ sortColumns }) => (
+      <AntdColumnTitle dataIndex='title_id' sortColumns={sortColumns} name={t('dashboard-list.title_id')} />
+    ),
+    dataIndex: 'title_id',
+    key: 'title_id',
     width: 150,
     ellipsis: true,
-    render: (text: string) => <StyledLink to={appRoutes.app.dashboardDetails.replace(':id', text)}>{text}</StyledLink>
+    sorter: true,
+    render: (text: string) => <StyledLink to={appRoutes.app.movieDetails.replace(':id', text)}>{text}</StyledLink>
   },
   {
-    title: t('dashboard-list.user_name'),
-    dataIndex: 'user_name',
-    key: 'user_name',
+    title: t('dashboard-list.creator_name'),
+    dataIndex: 'creator_name',
+    key: 'creator_name',
     width: 150,
     ellipsis: true
   },
@@ -67,9 +70,9 @@ export const useColumns = (handleOpenSidebar: (id: string) => void, t: TFunction
     ellipsis: true
   },
   {
-    title: t('dashboard-list.error_code'),
-    dataIndex: 'error_code',
-    key: 'error_code',
+    title: t('dashboard-list.imdb_id'),
+    dataIndex: 'imdb_id',
+    key: 'imdb_id',
     width: 170,
     ellipsis: true
   }

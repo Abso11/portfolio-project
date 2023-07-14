@@ -1,6 +1,6 @@
 export const appRoutes = {
   app: {
-    dashboard: '/',
-    dashboardDetails: '/dashboard/:id/details'
+    movies: '/movies',
+    movieDetails: '/movies/:id/details'
   }
 };

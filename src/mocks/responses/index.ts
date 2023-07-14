@@ -1,2 +1,2 @@
-export * from './dashboard.fixtures';
-export * from './user-details.fixtures';
+export * from './movie-list.fixtures';
+export * from './movie-details.fixtures';

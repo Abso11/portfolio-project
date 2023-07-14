@@ -6,7 +6,7 @@ import { StyledLink, LinksContainer, ErrorCode, Container, Wrapper, Code404, Tit
 const links = [
   {
     name: t('menu.dashboard-list'),
-    path: appRoutes.app.dashboard
+    path: appRoutes.app.movies
   }
 ];
 

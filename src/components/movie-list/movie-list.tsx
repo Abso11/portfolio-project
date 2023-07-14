@@ -5,27 +5,29 @@ import { OrderDirection } from 'enums';
 import { useListQuery, usePaginationHelpers } from 'hooks';
 import ContentWrapper from 'components/common/content-wrapper/content-wrapper';
 import { ReactComponent as ExpandIcon } from 'assets/icons/expand-icon.svg';
-import { DashboardListHeader, DashboardListEditForm, DashboardListDetails } from './components';
-import { useFetchDashboardList } from './dashboard-list.hooks';
-import { PaginationWrapper, TableWrapper, ExpandSwitch } from './dashboard-list.styled';
-import { useColumns } from './dashboard-list.columns';
-import { today, yesterday } from './dashboard-list.constants';
+import { MovieListHeader, MovieListEditForm, MovieListDetails } from './components';
+import { useFetchMovieList } from './movie-list.hooks';
+import { PaginationWrapper, TableWrapper, ExpandSwitch } from './movie-list.styled';
+import { useColumns } from './movie-list.columns';
+import { today, yesterday } from './movie-list.constants';
 
-export const DashboardList = (): JSX.Element => {
+export const MovieList = (): JSX.Element => {
   const [isSidebarVisible, setIsSidebarVisible] = useState<boolean>(false);
-  const [selectedUserId, setSelectedUserId] = useState<string>('');
+  const [selectedMovieId, setSelectedMovieId] = useState<string>('');
+
   const { t } = useTranslation();
+
   const { listQuery, setListQuery } = useListQuery('user_id', {
     start_date: new Date('July 10, 2000 03:24:00'),
     end_date: today
   });
-  const { data, isError, isLoading, refetch, isFetching } = useFetchDashboardList(listQuery);
+  const { data, isError, isLoading, refetch, isFetching } = useFetchMovieList(listQuery);
 
   const { handleTableChange, handlePaginationChange, handleRangeChange } = usePaginationHelpers(setListQuery);
 
   const handleOpenSidebar = (id: string): void => {
     setIsSidebarVisible(true);
-    setSelectedUserId(id);
+    setSelectedMovieId(id);
   };
 
   const handleCloseSidebar = (): void => {
@@ -34,15 +36,15 @@ export const DashboardList = (): JSX.Element => {
 
   const columns = useColumns(handleOpenSidebar, t);
 
-  const initialValues = data?.logs.filter(({ user_id }) => user_id === selectedUserId);
+  const initialValues = data?.movie_data.filter(({ title_id }) => title_id === selectedMovieId);
 
   return (
     <>
-      <DashboardListHeader onRangeChange={handleRangeChange} listQuery={listQuery} setListQuery={setListQuery} />
+      <MovieListHeader onRangeChange={handleRangeChange} listQuery={listQuery} setListQuery={setListQuery} />
       <ContentWrapper isError={isError} refetch={refetch} isLoading={false} noData={!isLoading && isError}>
         <TableWrapper>
           <Table
-            dataSource={data?.logs}
+            dataSource={data?.movie_data}
             columns={columns}
             sortDirections={[OrderDirection.ASC, OrderDirection.DESC, OrderDirection.ASC]}
             showSorterTooltip={false}
@@ -55,8 +57,8 @@ export const DashboardList = (): JSX.Element => {
             pagination={false}
             rowClassName={(_, index) => (index % 2 ? 'even' : 'odd')}
             expandable={{
-              expandedRowRender: ({ poster, details, action }) => (
-                <DashboardListDetails details={details} poster={poster} action={action} />
+              expandedRowRender: ({ poster, details, title }) => (
+                <MovieListDetails details={details} poster={poster} title={title} />
               ),
               expandIcon: ({ expanded, onExpand, record }) => (
                 <ExpandSwitch isExpanded={expanded} onClick={(e) => onExpand(record, e)}>
@@ -80,12 +82,12 @@ export const DashboardList = (): JSX.Element => {
           </PaginationWrapper>
         </TableWrapper>
       </ContentWrapper>
-      <DashboardListEditForm
-        user_id={selectedUserId as string}
+      <MovieListEditForm
+        title_id={selectedMovieId as string}
         isSidebarVisible={isSidebarVisible}
         initialValues={{
-          user_name: initialValues?.[0]?.user_name as string,
-          action: initialValues?.[0]?.action as string
+          creator_name: initialValues?.[0]?.creator_name as string,
+          title: initialValues?.[0]?.title as string
         }}
         onCloseSidebar={handleCloseSidebar}
       />

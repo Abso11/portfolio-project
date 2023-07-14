@@ -1,7 +1,7 @@
 export default {
-  DASHBOARD: {
-    LIST: '/dashboard',
-    LIST_HINTS: '/dashboard/hints',
-    USER_DETAILS: '/dashboard/:id/details'
+  APP: {
+    MOVIE_LIST: '/movies',
+    MOVIE_LIST_HINTS: '/movies/hints',
+    MOVIE_DETAILS: '/movies/:id/details'
   }
 };
