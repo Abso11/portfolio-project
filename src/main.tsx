@@ -11,7 +11,9 @@ import i18n from 'utils/i18n';
 const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById('root') as Element);
 
-worker.start();
+worker.start({
+  onUnhandledRequest: 'bypass'
+});
 
 root.render(
   <I18nextProvider i18n={i18n}>

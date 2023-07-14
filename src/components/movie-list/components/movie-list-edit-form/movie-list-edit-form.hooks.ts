@@ -5,7 +5,7 @@ import { apiPaths, patchData } from 'utils';
 import { QueryKeysDashboard } from 'enums';
 import { UpdateMovieListReq } from 'components/movie-list/movie-list.types';
 
-const saveUserOnMovieList = async (payload: UpdateMovieListReq): Promise<void> => {
+const saveMovieList = async (payload: UpdateMovieListReq): Promise<void> => {
   const {
     APP: { MOVIE_LIST }
   } = apiPaths;
@@ -14,14 +14,14 @@ const saveUserOnMovieList = async (payload: UpdateMovieListReq): Promise<void> =
   return data;
 };
 
-type UseSaveSiteDetails = {
+type SaveMovieList = {
   isSaving: boolean;
   saveMovieData: UseMutateAsyncFunction<void, unknown, UpdateMovieListReq, unknown>;
 };
 
-export const useSaveMovieData = (onError: () => void): UseSaveSiteDetails => {
+export const useSaveMovieData = (onError: () => void): SaveMovieList => {
   const { mutateAsync: saveMovieData, isLoading: isSaving } = useMutationWithError(
-    (formValues: UpdateMovieListReq) => saveUserOnMovieList(formValues),
+    (formValues: UpdateMovieListReq) => saveMovieList(formValues),
     {
       errorMessage: t<string>('save-error'),
       successMessage: t<string>('save-success'),

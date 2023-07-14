@@ -16,17 +16,17 @@ export const Navigation = (): JSX.Element => {
   return (
     <Menu isOpened={isOpened} setIsOpened={setIsOpened}>
       <MenuItem
-        title={t('menu.dashboard-list')}
+        title={t('menu.movie-list')}
         onClick={() => {
           navigate(appRoutes.app.movies);
         }}
         isActive={pathname === '/'}
       />
       <MenuItem
-        title={t('menu.user-details')}
+        title={t('menu.movie-details')}
         onClick={() => {
           navigate(appRoutes.app.movieDetails.replace(':id', mockedMovieList[0]?.title_id as string));
-          // navigate always to first existing userid by default
+          // navigate always to first existing movieId by default
         }}
         isActive={pathname.includes('/details')}
       />

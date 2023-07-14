@@ -7,7 +7,7 @@ import { FormItem, AntdSidebar } from 'components/common';
 import { UpdateMovieListReq } from 'components/movie-list/movie-list.types';
 import { useSaveMovieData } from './movie-list-edit-form.hooks';
 import { FormInputs, validationSchema } from './utils';
-import { StyledEditUser } from './movie-list-edit-form.styled';
+import { StyledEditMovie } from './movie-list-edit-form.styled';
 
 type Props = {
   title_id: string;
@@ -52,20 +52,20 @@ export const MovieListEditForm = ({
       onSubmit={form.submit}
     >
       <Spin spinning={isSaving}>
-        <StyledEditUser>
-          {t('dashboard-list-edit-form.edit-user')}: {title_id}
-        </StyledEditUser>
+        <StyledEditMovie>
+          {t('movie-list-edit-form.edit-title-id')}: {title_id}
+        </StyledEditMovie>
         <Form form={form} initialValues={initialValues} onValuesChange={handleValuesChange} onFinish={handleSubmit}>
           <FormItem
             name={FormInputs.CREATOR_NAME}
-            label={t('dashboard-list-edit-form.user-name')}
+            label={t('movie-list-edit-form.creator-name')}
             rules={validationSchema[FormInputs.CREATOR_NAME]}
           >
             <Input />
           </FormItem>
           <FormItem
             name={FormInputs.TITLE}
-            label={t('dashboard-list-edit-form.action')}
+            label={t('movie-list-edit-form.title')}
             rules={validationSchema[FormInputs.TITLE]}
           >
             <Input />

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
-export const StyledEditUser = styled.div`
+export const StyledEditMovie = styled.div`
   margin-bottom: 15px;
 `;

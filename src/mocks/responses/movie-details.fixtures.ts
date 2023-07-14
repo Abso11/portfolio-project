@@ -1,134 +1,134 @@
-import { UserDetailsRes } from 'components/user-details/user-details.types';
+import { MovieDetailsRes } from 'components/movie-details/movie-details.types';
 
-export const userDetailsData: UserDetailsRes[] = [
+export const mockedMovieDetails: MovieDetailsRes[] = [
   {
     id: '1A',
-    name: 'Game of Thrones',
-    timezone: 'Europe/Amsterdam',
+    title: 'Game of Thrones',
+    timezone: 'America/Los_Angeles',
     budget: 1000000,
-    phone: '2,172,079',
-    gender: 'series',
-    age: 9.2,
-    country: 'English'
+    votes: '2,172,079',
+    type: 'series',
+    rating: 9.2,
+    language: 'English'
   },
   {
     id: '2A',
-    name: 'The Boys',
-    timezone: 'US/Arizona',
+    title: 'The Boys',
+    timezone: 'America/Los_Angeles',
     budget: 1000000,
-    phone: '555,875',
-    gender: 'series',
-    age: 8.7,
-    country: 'English'
+    votes: '555,875',
+    type: 'series',
+    rating: 8.7,
+    language: 'English'
   },
   {
     id: '3A',
-    name: 'Better Call Saul',
+    title: 'Better Call Saul',
     timezone: 'US/Arizona',
     budget: 300000,
-    phone: '585,613',
-    gender: 'series',
-    age: 9.1,
-    country: 'English'
+    votes: '585,613',
+    type: 'series',
+    rating: 9.1,
+    language: 'English'
   },
   {
     id: '4A',
-    name: 'Breaking Bad',
-    timezone: 'US/Arizona',
+    title: 'Breaking Bad',
+    timezone: 'America/Los_Angeles',
     budget: 30000,
-    phone: '1,992,286"',
-    gender: 'series',
-    age: 9.5,
-    country: 'English'
+    votes: '1,992,286"',
+    type: 'series',
+    rating: 9.5,
+    language: 'English'
   },
   {
     id: '5A',
-    name: 'Daredevil',
-    timezone: 'US/Arizona',
+    title: 'Daredevil',
+    timezone: 'America/Los_Angeles',
     budget: 300000,
-    phone: '455,698',
-    gender: 'series',
-    age: 8.6,
-    country: 'English'
+    votes: '455,698',
+    type: 'series',
+    rating: 8.6,
+    language: 'English'
   },
   {
     id: '6A',
-    name: 'Sons of Anarchy',
+    title: 'Sons of Anarchy',
     timezone: 'US/Arizona',
     budget: 300000,
-    phone: '308,835',
-    gender: 'series',
-    age: 8.6,
-    country: 'English'
+    votes: '308,835',
+    type: 'series',
+    rating: 8.6,
+    language: 'English'
   },
   {
     id: '7A',
-    name: 'Narcos',
+    title: 'Narcos',
     timezone: 'Europe/Amsterdam',
     budget: 300000,
-    phone: '444,541',
-    gender: 'series',
-    age: 8.8,
-    country: 'English, Spanish'
+    votes: '444,541',
+    type: 'series',
+    rating: 8.8,
+    language: 'English, Spanish'
   },
   {
     id: '8A',
-    name: 'House of the Dragon',
-    timezone: 'US/Arizona',
+    title: 'House of the Dragon',
+    timezone: 'America/Los_Angeles',
     budget: 1000000,
-    phone: '331,089',
-    gender: 'series',
-    age: 8.5,
-    country: 'English'
+    votes: '331,089',
+    type: 'series',
+    rating: 8.5,
+    language: 'English'
   },
   {
     id: '9A',
-    name: 'The Punisher',
+    title: 'The Punisher',
     timezone: 'US/Arizona',
     budget: 3000000,
-    phone: '249,716',
-    gender: 'series',
-    age: 8.5,
-    country: 'English'
+    votes: '249,716',
+    type: 'series',
+    rating: 8.5,
+    language: 'English'
   },
   {
     id: '1B',
-    name: 'Chernobyl',
-    timezone: 'US/Arizona',
+    title: 'Chernobyl',
+    timezone: 'Europe/Helsinki',
     budget: 300000,
-    phone: '803,191',
-    gender: 'series',
-    age: 9.4,
-    country: 'English, Russian, Ukrainian'
+    votes: '803,191',
+    type: 'series',
+    rating: 9.4,
+    language: 'English, Russian, Ukrainian'
   },
   {
     id: '2B',
-    name: 'The Mandalorian',
-    timezone: 'US/Arizona',
+    title: 'The Mandalorian',
+    timezone: 'America/Los_Angeles',
     budget: 30000,
-    phone: '549,415',
-    gender: 'series',
-    age: 8.7,
-    country: 'English'
+    votes: '549,415',
+    type: 'series',
+    rating: 8.7,
+    language: 'English'
   },
   {
     id: '3B',
-    name: 'The Last of Us',
+    title: 'The Last of Us',
     timezone: 'US/Arizona',
     budget: 30000,
-    phone: '421,802',
-    gender: 'series',
-    age: 8.8,
-    country: 'English'
+    votes: '421,802',
+    type: 'series',
+    rating: 8.8,
+    language: 'English'
   },
   {
     id: '4B',
-    name: 'Prison Break',
-    timezone: 'US/Arizona',
+    title: 'Prison Break',
+    timezone: 'America/Los_Angeles',
     budget: 30000,
-    phone: '554,661"',
-    gender: 'series',
-    age: 8.3,
-    country: 'English'
+    votes: '554,661"',
+    type: 'series',
+    rating: 8.3,
+    language: 'English'
   }
 ];

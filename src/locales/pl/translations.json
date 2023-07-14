@@ -12,42 +12,44 @@
   "try-to-refresh": "Przeładuj dane",
   "page-not-found": "Strony nie znaleziono",
   "helpful-links": "Linki pomocniczne",
-  "dashboard-list": {
-    "timestamp": "Czas",
-    "action": "Akcja",
-    "user_id": "Id użytkownika",
-    "user_name": "Nazwa użytkownika",
+  "movie-list": {
+    "released": "Wydano",
+    "title": "Tytuł",
+    "title_id": "ID Tytułu",
+    "creator_name": "Wykonawcy",
     "status": "Status",
-    "error_code": "Kod błędu",
+    "imdb_id": "IMDB ID",
     "description": "Opis",
     "error": "Błąd",
-    "searching-for": "Szukaj: ",
+    "total_seasons": "Ilość sezonów",
+    "country": "Kraj",
+    "searching-for": "Wyszukiwanie dla: ",
     "under": "pod",
     "per-page": "na strone",
-    "header": "Szukaj użytkowników..."
+    "header": "Szukaj poprzez Tytuł | ID | Wykonawców | Status..."
   },
-  "dashboard-details": {
-    "name": "Nazwa",
-    "timezone": "Strefa czasowa",
-    "user-id": "Id użytkownika",
+  "movie-details": {
+    "title": "Tytuł",
+    "timezone": "Czas",
+    "id": "ID Tytułu",
     "budget": "Budżet",
     "additional-information": "Dodatkowe informacje",
-    "phone": "Telefon",
-    "country": "Kraj",
-    "age": "Wiek",
-    "gender": "Płeć"
+    "votes": "Głosy",
+    "language": "Język",
+    "rating": "Ocena",
+    "type": "Rodzaj"
   },
-  "dashboard-list-edit-form": {
-    "edit-user": "Edytowanie użytkownika",
-    "user-name": "Nazwa użytkownika",
-    "action": "Akcja"
+  "movie-list-edit-form": {
+    "edit-title-id": "Edytowanie filmu z ID",
+    "creator-name": "Nazwa wykonawcy",
+    "title": "Tytuł"
   },
-  "dashboard-details-modal": {
-   "edit": "Edytuj użytkownika"
+  "movie-details-modal": {
+   "edit": "Edytuj film"
   },
   "menu": {
-    "dashboard-list": "Lista główna",
-    "user-details": "Sczegóły użytkownika"
+    "dashboard-list": "Lista filmów",
+    "user-details": "Sczegóły filmu"
   },
   "forms": {
     "is-required": "Jest wymagane",

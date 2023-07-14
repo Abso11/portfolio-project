@@ -57,7 +57,7 @@ export const MovieListHeader = ({ onRangeChange, listQuery, setListQuery }: Prop
         setSearchText={setSearchText}
         debouncedValue={debouncedValue}
         withTags
-        placeholder={t('dashboard-list.header')}
+        placeholder={t('movie-list.header')}
         selectedOptions={Object.entries(listQuery.filter || {}).map(([key, value]) => ({ key, value }))}
         onDeleteFilter={handleDeleteFilter}
       />

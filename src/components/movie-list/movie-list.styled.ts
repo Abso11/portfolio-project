@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { mediaQuery, zIndex } from 'styles';
+import { mediaQuery } from 'styles';
 
 export const TableWrapper = styled.div`
   margin-bottom: 80px;
@@ -82,7 +82,6 @@ export const PaginationWrapper = styled.div`
   padding: ${({ theme: { spacing } }) => `18px ${spacing.space_12}`};
   background-color: ${({ theme }) => theme.colors.white};
   border-top: 1px solid ${({ theme }) => theme.colors.borderGrey};
-  z-index: ${zIndex.level2};
 
   ${mediaQuery.tabletMini} {
     left: 206px;

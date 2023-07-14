@@ -24,7 +24,7 @@ export const useColumns = (handleOpenSidebar: (id: string) => void, t: TFunction
   },
   {
     title: ({ sortColumns }) => (
-      <AntdColumnTitle dataIndex='released' sortColumns={sortColumns} name={t('dashboard-list.released')} />
+      <AntdColumnTitle dataIndex='released' sortColumns={sortColumns} name={t('movie-list.released')} />
     ),
     dataIndex: 'released',
     key: 'released',
@@ -36,7 +36,7 @@ export const useColumns = (handleOpenSidebar: (id: string) => void, t: TFunction
   },
   {
     title: ({ sortColumns }) => (
-      <AntdColumnTitle dataIndex='title' sortColumns={sortColumns} name={t('dashboard-list.title')} />
+      <AntdColumnTitle dataIndex='title' sortColumns={sortColumns} name={t('movie-list.title')} />
     ),
     dataIndex: 'title',
     key: 'title',
@@ -46,7 +46,7 @@ export const useColumns = (handleOpenSidebar: (id: string) => void, t: TFunction
   },
   {
     title: ({ sortColumns }) => (
-      <AntdColumnTitle dataIndex='title_id' sortColumns={sortColumns} name={t('dashboard-list.title_id')} />
+      <AntdColumnTitle dataIndex='title_id' sortColumns={sortColumns} name={t('movie-list.title_id')} />
     ),
     dataIndex: 'title_id',
     key: 'title_id',
@@ -56,21 +56,21 @@ export const useColumns = (handleOpenSidebar: (id: string) => void, t: TFunction
     render: (text: string) => <StyledLink to={appRoutes.app.movieDetails.replace(':id', text)}>{text}</StyledLink>
   },
   {
-    title: t('dashboard-list.creator_name'),
+    title: t('movie-list.creator_name'),
     dataIndex: 'creator_name',
     key: 'creator_name',
     width: 150,
     ellipsis: true
   },
   {
-    title: t('dashboard-list.status'),
+    title: t('movie-list.status'),
     dataIndex: 'status',
     key: 'status',
     width: 140,
     ellipsis: true
   },
   {
-    title: t('dashboard-list.imdb_id'),
+    title: t('movie-list.imdb_id'),
     dataIndex: 'imdb_id',
     key: 'imdb_id',
     width: 170,
