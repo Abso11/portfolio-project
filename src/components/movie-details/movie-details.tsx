@@ -19,7 +19,7 @@ export const MovieDetails = (): JSX.Element => {
   return (
     <ContentWrapper isError={isError} isLoading={isFetching} refetch={refetch}>
       <SectionTitles
-        name={'Overall Data'}
+        name={t('movie-details.overall-data')}
         additional={
           <MovieDetailsModal
             id={id as string}

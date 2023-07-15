@@ -71,11 +71,11 @@ describe('Movie Details', () => {
 
       expect(screen.queryByText('Edit movie details')).toBeInTheDocument();
 
-      const budgetInput = screen.getByRole('spinbutton', { name: 'Budget' });
+      const budgetInput = screen.getByRole('spinbutton', { name: 'Budget per episode' });
       fireEvent.change(budgetInput, { target: { value: '11000' } });
 
       await act(async () => {
-        expect(screen.getByRole('spinbutton', { name: 'Budget' })).toHaveValue('11000');
+        expect(screen.getByRole('spinbutton', { name: 'Budget per episode' })).toHaveValue('11000');
       });
 
       const cancelButton = screen.getByRole('button', { name: 'Cancel' });
@@ -105,11 +105,11 @@ describe('Movie Details', () => {
 
       expect(screen.queryByText('Edit movie details')).toBeInTheDocument();
 
-      const budgetInput = screen.getByRole('spinbutton', { name: 'Budget' });
+      const budgetInput = screen.getByRole('spinbutton', { name: 'Budget per episode' });
       fireEvent.change(budgetInput, { target: { value: '15000' } });
 
       await act(async () => {
-        expect(screen.getByRole('spinbutton', { name: 'Budget' })).toHaveValue('15000');
+        expect(screen.getByRole('spinbutton', { name: 'Budget per episode' })).toHaveValue('15000');
       });
 
       const saveButton = screen.getByRole('button', { name: 'Save' });

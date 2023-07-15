@@ -3,7 +3,7 @@ import { MovieListHintsRes, MovieListHintsReq } from 'components/movie-list/movi
 import { usePaginationConfig } from 'hooks';
 import { ListQuery } from 'types';
 import { apiPaths, getData } from 'utils';
-import { QueryKeysDashboard } from 'enums';
+import { QueryKeysMovieList } from 'enums';
 
 const fetchMovieListHints = async (request: MovieListHintsReq): Promise<MovieListHintsRes> => {
   const {
@@ -17,7 +17,7 @@ const fetchMovieListHints = async (request: MovieListHintsReq): Promise<MovieLis
 export const useMovieListHints = (listQuery: ListQuery, searchText: string): UseQueryResult<MovieListHintsRes> => {
   const { startDate, endDate } = usePaginationConfig(listQuery);
   return useQuery(
-    [QueryKeysDashboard.DashboardListHints, startDate, endDate, searchText],
+    [QueryKeysMovieList.MovieList, startDate, endDate, searchText],
     () =>
       fetchMovieListHints({
         start_date: startDate as Date,

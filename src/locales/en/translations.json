@@ -12,6 +12,7 @@
   "try-to-refresh": "Try to refresh",
   "page-not-found": "Page not found",
   "helpful-links": "Helpful links",
+  "accept": "Accept",
   "movie-list": {
     "released": "Released",
     "title": "Title",
@@ -29,10 +30,11 @@
     "header": "Search by Title | ID | Creators | Status..."
   },
   "movie-details": {
+    "overall-data": "Overall data",
     "title": "Title",
     "timezone": "Timezone",
     "id": "Title ID",
-    "budget": "Budget",
+    "budget": "Budget per episode",
     "additional-information": "Additional Information",
     "votes": "Votes",
     "language": "Language",
@@ -43,6 +45,10 @@
     "edit-title-id": "Editing Title ID",
     "creator-name": "Creator Name",
     "title": "Title"
+  },
+  "movie-list-redirect-form": {
+    "information": "You will be redirected to IMDB site for: ",
+    "warning": "If you sure about that, click Accept"
   },
   "movie-details-modal": {
    "edit": "Edit movie details"

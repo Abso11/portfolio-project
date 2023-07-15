@@ -1,8 +1,8 @@
-export enum QueryKeysDashboard {
-  DashboardList = 'fetchDashboardList',
-  DashboardListHints = 'fetchDashboardListHints'
+export enum QueryKeysMovieList {
+  MovieList = 'fetchMovieList',
+  MovieListHints = 'fetchMovieListHints'
 }
 
-export enum QueryKeysUserDetails {
-  UserDetails = 'fetchUserDetails'
+export enum QueryKeysMovieDetails {
+  MovieDetails = 'fetchMovieDetails'
 }

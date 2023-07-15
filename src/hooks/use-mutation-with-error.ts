@@ -5,8 +5,6 @@ import {
   UseMutationResult,
   useQueryClient
 } from '@tanstack/react-query';
-import { AxiosError } from 'axios';
-import { handleApiError } from 'utils/api-helpers';
 import notify, { MessageType } from 'utils/notify';
 
 interface UseMutationOptionsEx {
@@ -27,8 +25,6 @@ export default <TData = unknown, TError = unknown, TVariables = void, TContext =
   return useMutation(func, {
     ...options,
     onError: (error, variables, context) => {
-      handleApiError(error as AxiosError<Error>);
-
       if (options) {
         const { onError, errorMessage } = options;
 

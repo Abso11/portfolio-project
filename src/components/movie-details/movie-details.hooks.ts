@@ -1,7 +1,7 @@
 import { UseQueryResult, useQuery } from '@tanstack/react-query';
 import { generatePath } from 'react-router';
 import { apiPaths, getData } from 'utils';
-import { QueryKeysUserDetails } from 'enums';
+import { QueryKeysMovieDetails } from 'enums';
 import { MovieDetailsReq, MovieDetailsRes } from './movie-details.types';
 
 const fetchMovieDetails = async (id: MovieDetailsReq): Promise<MovieDetailsRes> => {
@@ -14,6 +14,6 @@ const fetchMovieDetails = async (id: MovieDetailsReq): Promise<MovieDetailsRes> 
 };
 
 export const useFetchMovieDetails = (id: string): UseQueryResult<MovieDetailsRes, Error> =>
-  useQuery<MovieDetailsRes, Error>([QueryKeysUserDetails.UserDetails, id], () => fetchMovieDetails({ id }), {
+  useQuery<MovieDetailsRes, Error>([QueryKeysMovieDetails.MovieDetails, id], () => fetchMovieDetails({ id }), {
     refetchOnWindowFocus: false
   });

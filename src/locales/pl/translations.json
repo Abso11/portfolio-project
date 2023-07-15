@@ -12,6 +12,7 @@
   "try-to-refresh": "Przeładuj dane",
   "page-not-found": "Strony nie znaleziono",
   "helpful-links": "Linki pomocniczne",
+  "accept": "Akceptuj",
   "movie-list": {
     "released": "Wydano",
     "title": "Tytuł",
@@ -29,10 +30,11 @@
     "header": "Szukaj poprzez Tytuł | ID | Wykonawców | Status..."
   },
   "movie-details": {
+    "overall-data": "Dane ogólne",
     "title": "Tytuł",
     "timezone": "Czas",
     "id": "ID Tytułu",
-    "budget": "Budżet",
+    "budget": "Budżet dla odcinka",
     "additional-information": "Dodatkowe informacje",
     "votes": "Głosy",
     "language": "Język",
@@ -44,12 +46,16 @@
     "creator-name": "Nazwa wykonawcy",
     "title": "Tytuł"
   },
+  "movie-list-redirect-form": {
+    "information": "Zostaniesz przeniesiony na stronę IMDB dla: ",
+    "warning": "Jeśli jesteś tego pewny naciśnij akceptuj"
+  },
   "movie-details-modal": {
    "edit": "Edytuj film"
   },
   "menu": {
-    "dashboard-list": "Lista filmów",
-    "user-details": "Sczegóły filmu"
+    "movie-list": "Lista filmów",
+    "movie-details": "Sczegóły filmu"
   },
   "forms": {
     "is-required": "Jest wymagane",
