@@ -5,7 +5,7 @@ import useMutationWithError from 'hooks/use-mutation-with-error';
 import apiPaths from 'utils/api-paths';
 import { patchData } from 'utils/api-helpers';
 import { UpdateMovieDetailsReq } from 'components/movie-details/movie-details.types';
-import { QueryKeysUserDetails } from 'enums';
+import { QueryKeysMovieDetails } from 'enums';
 
 const saveMovieDetails = async (id: string, payload: UpdateMovieDetailsReq): Promise<void> => {
   const {
@@ -27,7 +27,7 @@ export const useSaveMovieDetails = (movieId: string, onError: () => void): UseSa
     {
       errorMessage: t<string>('save-error'),
       successMessage: t<string>('save-success'),
-      invalidateQueryKey: QueryKeysUserDetails.UserDetails,
+      invalidateQueryKey: QueryKeysMovieDetails.MovieDetails,
       onError
     }
   );

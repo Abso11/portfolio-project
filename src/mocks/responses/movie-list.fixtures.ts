@@ -63,7 +63,7 @@ export const mockedMovieList: MovieListRes['movie_data'] = [
       'https://m.media-amazon.com/images/M/MV5BYmQ4YWMxYjUtNjZmYi00MDQ1LWFjMjMtNjA5ZDdiYjdiODU5XkEyXkFqcGdeQXVyMTMzNDExODE5._V1_SX300.jpg',
     details: {
       description:
-        'A chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine with a former student in order to secure his family`s future.',
+        'A chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine',
       total_seasons: '5',
       country: 'United States'
     }
@@ -111,8 +111,7 @@ export const mockedMovieList: MovieListRes['movie_data'] = [
     poster:
       'https://m.media-amazon.com/images/M/MV5BNmFjODU3YzgtMGUwNC00ZGI3LWFkZjQtMjkxZDc3NmQ1MzcyXkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_SX300.jpg',
     details: {
-      description:
-        'A chronicled look at the criminal exploits of Colombian drug lord Pablo Escobar, as well as the many other drug kingpins who plagued the country through the years.',
+      description: 'A chronicled look at the criminal exploits of Colombian drug lord Pablo Escobar',
       total_seasons: '3',
       country: 'United States, Colombia'
     }
@@ -146,7 +145,7 @@ export const mockedMovieList: MovieListRes['movie_data'] = [
       'https://m.media-amazon.com/images/M/MV5BNjJhZDZhNWYtMjdhYS00NjkyLWE5NzItMzljNmQ3NGE4MGZjXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_SX300.jpg',
     details: {
       description:
-        'After his revenge on those who murdered his family, aimless Marine veteran Frank Castle finds a new meaning in life as a vigilante known as The Punisher.',
+        'After his revenge on those who murdered his family,  Frank Castle finds a new meaning in life as a vigilante known as The Punisher.',
       total_seasons: '2',
       country: 'United States'
     }
@@ -163,7 +162,7 @@ export const mockedMovieList: MovieListRes['movie_data'] = [
       'https://m.media-amazon.com/images/M/MV5BNTdkN2QwMDItMDVhNS00ZjFiLWEzNTctMzY5ODQzYWNkMDllXkEyXkFqcGdeQXVyMTMzNDExODE5._V1_SX300.jpg',
     details: {
       description:
-        'In April 1986, an explosion at the Chernobyl nuclear power plant in the Union of Soviet Socialist Republics becomes one of the world`s worst man-made catastrophes.',
+        'In April 1986, an explosion at the Chernobyl nuclear power plant in the USSR becomes one of the world`s worst man-made catastrophes.',
       total_seasons: '1',
       country: 'United States, United Kingdom'
     }

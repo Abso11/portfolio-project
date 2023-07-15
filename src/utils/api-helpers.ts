@@ -1,5 +1,4 @@
-import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
-// import { appRoutes } from 'urls';
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 
 export const getData = async <T1, T2>(url: string, params?: T1): Promise<AxiosResponse<T2>> => {
   const options: AxiosRequestConfig = {
@@ -40,14 +39,4 @@ export const postData = async <T, Y>(url: string, data: T): Promise<AxiosRespons
   };
 
   return axios(requestConfig);
-};
-
-export const handleApiError = (error: AxiosError<Error>): void => {
-  if (error.response && error.response.status) {
-    const { status } = error.response;
-
-    if (status === 401) {
-      window.location.reload();
-    }
-  }
 };

@@ -7,6 +7,7 @@ import { appRoutes } from 'urls';
 import { ReactComponent as EditIcon } from 'assets/icons/edit.svg';
 import { MovieListRes } from './movie-list.types';
 import { StyledEditButton, StyledLink } from './movie-list.styled';
+import { handleOpenModal } from './movie-list.helpers';
 
 export const formatDate = (date: Date): string => format(new Date(date), 'dd.MM.yyyy HH:mm');
 
@@ -74,6 +75,7 @@ export const useColumns = (handleOpenSidebar: (id: string) => void, t: TFunction
     dataIndex: 'imdb_id',
     key: 'imdb_id',
     width: 170,
-    ellipsis: true
+    ellipsis: true,
+    render: (text: string, record) => <a onClick={() => handleOpenModal(text, record.title)}>{text}</a>
   }
 ];

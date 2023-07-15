@@ -2,7 +2,7 @@ import { UseMutateAsyncFunction } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { useMutationWithError } from 'hooks';
 import { apiPaths, patchData } from 'utils';
-import { QueryKeysDashboard } from 'enums';
+import { QueryKeysMovieList } from 'enums';
 import { UpdateMovieListReq } from 'components/movie-list/movie-list.types';
 
 const saveMovieList = async (payload: UpdateMovieListReq): Promise<void> => {
@@ -25,7 +25,7 @@ export const useSaveMovieData = (onError: () => void): SaveMovieList => {
     {
       errorMessage: t<string>('save-error'),
       successMessage: t<string>('save-success'),
-      invalidateQueryKey: QueryKeysDashboard.DashboardList,
+      invalidateQueryKey: QueryKeysMovieList.MovieList,
       onError
     }
   );
