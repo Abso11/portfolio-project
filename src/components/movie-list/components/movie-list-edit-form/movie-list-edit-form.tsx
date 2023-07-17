@@ -41,6 +41,7 @@ export const MovieListEditForm = ({
 
   useEffect(() => {
     form.setFieldsValue(initialValues);
+    setIsSaveEnabled(false);
   }, [isSidebarVisible]);
 
   return (
