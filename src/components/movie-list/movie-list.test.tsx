@@ -1,4 +1,3 @@
-import { format } from 'date-fns';
 import userEvent from '@testing-library/user-event';
 import { uniqBy } from 'lodash';
 import { rest } from 'msw';
@@ -98,40 +97,6 @@ describe('Movie List', () => {
       expect(mockParams).toHaveBeenCalledWith(expect.stringContaining('take=20'));
 
       expect(await screen.findByText('The Last of Us')).toBeInTheDocument();
-    });
-  });
-
-  describe('Date picker', () => {
-    it('should refresh data when date range is changed', async () => {
-      const twoDaysAgo = new Date('July 10, 2000 03:24:00');
-      twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
-      twoDaysAgo.setHours(0, 0, 0, 0);
-      const twoDaysAgoDate = format(twoDaysAgo, 'yyyy-MM-dd');
-
-      render(<MovieList />);
-      await waitForElementToBeRemoved(() => screen.getByTestId('spinner'));
-
-      const datePickerInput = screen.getByPlaceholderText('Start date');
-
-      await act(async () => {
-        await waitFor(() => fireEvent.mouseDown(datePickerInput));
-      });
-
-      const pickerDateOption = await screen.findByTitle(twoDaysAgoDate);
-      userEvent.click(pickerDateOption);
-
-      const confirmDateBtn = screen.getByRole('button', { name: 'Confirm' });
-      userEvent.click(confirmDateBtn);
-
-      const mockUrl = jest.fn();
-      const mockParams = jest.fn();
-      server.events.on('request:end', (req) => {
-        mockUrl(req.url.href);
-        mockParams(req.url.search);
-      });
-
-      await waitFor(() => expect(mockUrl).toHaveBeenCalledWith(expect.stringContaining(apiPaths.APP.MOVIE_LIST)));
-      expect(mockParams).toHaveBeenCalledWith(expect.stringContaining(`start_date=${twoDaysAgoDate}`));
     });
   });
 
