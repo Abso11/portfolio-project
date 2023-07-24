@@ -1,8 +1,10 @@
 import { startOfDay, addDays } from 'date-fns';
 import { RangeValue } from 'rc-picker/lib/interface';
 import enLang from 'antd/es/date-picker/locale/en_US';
+import plLang from 'antd/es/date-picker/locale/pl_PL';
 import { ReactComponent as RangePickerArrows } from 'assets/icons/range-picker-arrows.svg';
 import { ReactComponent as RangePickerSuffixIcon } from 'assets/icons/range-picker-suffix-icon.svg';
+import { i18n } from 'utils';
 import { DatePicker } from './elements';
 import { DatePickerWrapper } from './view-date-picker.styled';
 
@@ -16,6 +18,12 @@ type Props = {
 };
 
 const { RangePicker } = DatePicker;
+
+plLang.lang = {
+  ...plLang.lang,
+  locale: 'pl',
+  ok: 'Potwierdź'
+};
 
 enLang.lang.ok = 'Confirm';
 
@@ -45,7 +53,7 @@ export const ViewDatePicker = ({
         onChange={handleChange}
         allowClear={false}
         showTime={{ format: showTimeFormat, minuteStep }}
-        locale={enLang}
+        locale={i18n.language === 'en' ? enLang : plLang}
       />
     </DatePickerWrapper>
   );

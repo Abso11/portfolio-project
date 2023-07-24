@@ -5,6 +5,7 @@ import { server } from 'mocks';
 import { act, fireEvent, render, screen, waitFor, waitForElementToBeRemoved, within } from 'tests';
 import apiPaths from 'utils/api-paths';
 import { mockedMovieList } from 'mocks/responses';
+import { i18n } from 'utils';
 import { MovieList, MovieListRes } from '.';
 
 const columnTitles = ['Released', 'Title', 'Title ID', 'Creators', 'Status', 'IMDB ID'];
@@ -22,10 +23,10 @@ describe('Movie List', () => {
       const table = screen.getByRole('table');
       expect(table).toBeInTheDocument();
 
-      const startDatePicker = screen.getByPlaceholderText('Start date');
+      const startDatePicker = screen.getByPlaceholderText(i18n.language === 'en' ? 'Start Date' : 'Data początkowa');
       expect(startDatePicker).toBeInTheDocument();
 
-      const endDatePicker = screen.getByPlaceholderText('End date');
+      const endDatePicker = screen.getByPlaceholderText(i18n.language === 'en' ? 'Start Date' : 'Data końcowa');
       expect(endDatePicker).toBeInTheDocument();
     });
 
