@@ -140,7 +140,7 @@ export const mockedMovieList: MovieListRes['movie_data'] = [
     title_id: '9A',
     creator_name: 'Steve Lightfoot',
     status: 'Finished',
-    imdb_id: 'tt11198330',
+    imdb_id: 'tt5675620',
     poster:
       'https://m.media-amazon.com/images/M/MV5BNjJhZDZhNWYtMjdhYS00NjkyLWE5NzItMzljNmQ3NGE4MGZjXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_SX300.jpg',
     details: {
