@@ -4,7 +4,7 @@ import { ReactComponent as ExpandIcon } from '../../../../assets/icons/expand-ar
 
 export const ExpandArrow = styled(ExpandIcon)<{
   $isExpanded: boolean;
-  isActive: boolean;
+  $isActive: boolean;
 }>`
   position: absolute;
   top: ${({ theme }) => theme.spacing.space_12};
@@ -14,8 +14,8 @@ export const ExpandArrow = styled(ExpandIcon)<{
   cursor: pointer;
 
   path {
-    stroke: ${({ $isExpanded, isActive, theme }) =>
-      ($isExpanded && isActive) || isActive ? theme.colors.primary.white : theme.colors.primary.ghost_white};
+    stroke: ${({ $isExpanded, $isActive, theme }) =>
+      ($isExpanded && $isActive) || $isActive ? theme.colors.primary.white : theme.colors.primary.ghost_white};
   }
 `;
 

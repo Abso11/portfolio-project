@@ -11,9 +11,9 @@ The goal of my project is to show a similar level to a commercial project, throu
 - edit movie data within table form or movie details separate page with modal (working with backend)
 - update notifications with successful update or error after editing data
 - row expanding with more details about selected movie
-- the app working with self-created endpoints (mocked service worker)
+- the app working with self-created endpoints (mock service worker)
 - fetching data using tanstack-react-query/axios
-- responsive menu
+- responsive menu containing a list of films and a drop-down menu with details of films with a scroll
 - custom hooks
 - form validation
 - translate with i18next
@@ -27,14 +27,15 @@ Plans to add:
 - showing similar movies on the subpage with movie details
 
 # Tech Stack
-- Typescript
+- React/Typescript
 - Vite
 - eslint, prettier, husky, commitlint, lint-staged
-- react-query
-- antd
+- react-query/axios
+- ant-design UI library
 - styled-components
-- jest
-- mocked service worker
+- lodash, date-fns
+- react-testing-library/jest
+- mock service worker
 
 ## Development
 To develop this project you should run `yarn` and then `yarn start`.

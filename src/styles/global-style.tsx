@@ -22,6 +22,7 @@ export default createGlobalStyle`
     color: ${({ theme }) => theme.colors.black};
   }
 
+
   a {
     transition: .5s;
     cursor: pointer;
@@ -81,5 +82,24 @@ export default createGlobalStyle`
 
   .ant-divider-horizontal {
     margin: 0;
+  }
+
+
+  ::-webkit-scrollbar {
+  width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+  background-color: white;
+  }
+
+  ::-webkit-scrollbar-button {
+    background-color: ${({ theme }) => theme.colors.primary.deep_blue};
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+  background: ${({ theme }) => theme.colors.primary.deep_blue};
+  border-radius: 4px;
   }
 `;

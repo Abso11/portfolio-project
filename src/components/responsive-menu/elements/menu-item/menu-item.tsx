@@ -24,7 +24,7 @@ export const MenuItem = ({ title, isActive, subMenu, icon, iconActive, onClick, 
         {isLinkActive ? iconActive || icon : icon}
         {title}
       </Link>
-      {subMenu && <ExpandArrow $isExpanded={isExpanded} isActive={isActive} />}
+      {subMenu && <ExpandArrow $isExpanded={isExpanded} $isActive={isActive} />}
       {subMenu && isExpanded && <ul onClick={(e) => e.stopPropagation()}>{subMenu}</ul>}
     </ListItem>
   );
