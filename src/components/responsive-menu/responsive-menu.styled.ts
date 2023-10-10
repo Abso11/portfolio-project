@@ -14,12 +14,12 @@ export const Wrapper = styled.div`
   z-index: 100;
 
   ${mediaQuery.tabletMini} {
-    width: 203px;
+    width: 213px;
     height: 100vh;
   }
 
   ${mediaQuery.desktop} {
-    width: 247px;
+    width: 257px;
   }
 `;
 
@@ -54,13 +54,17 @@ export const Nav = styled.nav<{ isOpened: boolean }>`
   padding-top: 14px;
   background-color: inherit;
   transition: top 0.4s ease-in-out;
-  overflow-y: auto;
   z-index: 101;
 
   ul {
     list-style: none;
     margin: 0;
     padding: 0;
+    overflow-y: auto;
+  }
+
+  ${mediaQuery.desktop} {
+    height: calc(100vh - 100px);
   }
 
   ${mediaQuery.tabletMini} {

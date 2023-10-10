@@ -2,7 +2,7 @@ import { t } from 'i18next';
 import userEvent from '@testing-library/user-event';
 import { render, screen, waitFor } from 'tests';
 import { appRoutes } from 'urls';
-import { mockedMovieList } from 'mocks/responses';
+import { mockedMovieDetails, mockedMovieList } from 'mocks/responses';
 import { Navigation } from './navigation';
 
 describe('Navigation', () => {
@@ -24,6 +24,11 @@ describe('Navigation', () => {
       name: t<string>('menu.movie-details')
     });
     userEvent.click(link as Element);
+
+    const movieDetailsLink = await screen.findByRole('listitem', {
+      name: mockedMovieDetails[0]?.title
+    });
+    userEvent.click(movieDetailsLink);
 
     await waitFor(() => {
       expect(window.location.pathname).toBe(

@@ -7,7 +7,7 @@ export const MovieListDetails = ({ details, poster, title }: MovieListDetailsPro
 
   return (
     <DetailsWrapper>
-      <img src={poster} alt={title} />
+      <img src={poster} alt={title} loading='lazy' />
       <StyledMovieDetails>
         {Object.keys(details).map((detailKey) => (
           <div key={detailKey}>
